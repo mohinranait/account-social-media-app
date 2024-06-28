@@ -14,4 +14,70 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .chat_wrap {
+    /* height: calc(100vh - 56px); */
+
+  }
+
+  .chat_container {
+    /* height: 100%; */
+    /* background-color: rgb(246, 253, 246); */
+    /* display: flex; */
+  }
+
+  .lists {
+    flex: 1;
+    /* height: 100%; */
+    /* display: flex; */
+    /* flex-direction: column; */
+  }
+
+  .chat_lists {
+    flex: 1;
+    /* overflow-y: scroll; */
+
+  }
+
+  .chat {
+    flex: 2;
+    /* height: 100%; */
+    /* display: flex; */
+    /* flex-direction: column; */
+  }
+
+
+  .center {
+    flex: 1;
+    /* overflow-y: scroll; */
+
+  }
+
+
+
+  .bottom {
+    /* margin-top: auto; */
+  }
+
+  .details {
+    flex: 1;
+  }
+
+  .detailsActive {
+    flex: 2;
+    display: block;
+  }
+
+  .emoji {
+    position: relative;
+  }
+
+  .emoji .picker {
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+  }
+
+
+
 }

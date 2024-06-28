@@ -58,10 +58,10 @@ const MainHeader = () => {
                                 <ul className="flex justify-end items-center gap-5">
 
                                     <li>
-                                        <div className="flex items-center gap-1 cursor-pointer relative">
+                                        <Link href={`/chat`} className="flex items-center gap-1 cursor-pointer relative">
                                             <span className="w-[15px] h-[15px] rounded-full bg-white text-primary flex items-center justify-center text-xs  absolute -top-1 -right-1">4</span>
                                             <FaFacebookMessenger size={25} className="text-white" />
-                                        </div>
+                                        </Link>
                                     </li>
                                     <li>
                                         <div className="flex items-center gap-1 cursor-pointer relative">
