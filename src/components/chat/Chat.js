@@ -6,15 +6,29 @@ import { FaCamera, FaImage, FaVoicemail } from "react-icons/fa";
 import PrimaryButton from '../buttons/PrimaryButton';
 import { MdOutlineEmojiEmotions } from "react-icons/md";
 import EmojiPicker from "emoji-picker-react";
+import dynamic from 'next/dynamic';
+// import MdxEditorComponent from '';
+const Editor = dynamic(() => import('../editor/MdxEditorComponent'), {
+    // Make sure we turn SSR off
+    ssr: false
+})
+
 
 const Chat = ({ setIsDetails, isDetails }) => {
     const [isEmoji, setIsEmoji] = useState(false)
-
+    const [value, setValue] = useState('handle message')
     // handle emoji 
     const handleEmoji = (e) => {
         console.log(e?.emoji);
         setIsEmoji(false)
     }
+
+    // get value
+    const handleGetValue = () => {
+        console.log(value);
+        setValue('')
+    }
+    console.log(value);
     return (
         <div className={`chat  h-full  flex-col border-l border-r border-gray-200 ${isDetails ? 'hidden' : 'hidden res8:flex'} `} >
             <div className='top'>
@@ -166,9 +180,9 @@ const Chat = ({ setIsDetails, isDetails }) => {
                     </div>
                 </div>
             </div>
-            <div className="mt-auto flex gap-2 items-center p-3 relative">
+            <div className="mt-auto flex gap-2 items-end p-3 relative">
 
-                <div className='flex gap-2'>
+                <div className='flex gap-2 mb-1'>
                     <span className='w-7 h-7 cursor-pointer rounded-full flex items-center justify-center'>
                         <FaImage />
                     </span>
@@ -185,8 +199,11 @@ const Chat = ({ setIsDetails, isDetails }) => {
                     </div>
                 </div>
                 {/* <textarea name="" id="" className='flex-1 bg-gray-200 rounded-3xl py-2 px-3'></textarea> */}
-                <input type="text" className='flex-1 bg-gray-200 rounded-3xl py-2 px-3' placeholder='Message' />
-                <PrimaryButton type='button'>
+                {/* <input type="text" className='flex-1 bg-gray-200 rounded-3xl py-2 px-3' placeholder='Message' /> */}
+                <div className='flex-1'>
+                    <Editor value={value} setValue={setValue} placeholder="Message" />
+                </div>
+                <PrimaryButton onClick={handleGetValue} type='button'>
                     Send
                 </PrimaryButton>
 

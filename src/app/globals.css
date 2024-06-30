@@ -78,6 +78,19 @@
     bottom: 100%;
   }
 
+  .mdx_editor_chat {
+    background-color: rgb(205, 205, 205);
+    border-radius: 8px;
+    max-height: 120px;
+    overflow-y: auto;
+
+  }
+
+  .mdx_editor_chat ._contentEditable_yms4a_379 {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 6px 10px;
+  }
 
 
 }
