@@ -5,6 +5,7 @@ import { RiPagesFill } from "react-icons/ri";
 import { LiaLayerGroupSolid } from "react-icons/lia";
 import { IoGameController } from "react-icons/io5";
 import { PiVideo } from 'react-icons/pi';
+import Image from 'next/image';
 
 const HomeLeftSidebar = () => {
     return (
@@ -14,31 +15,42 @@ const HomeLeftSidebar = () => {
                 <ul className='py-3 px-3 '>
                     <li>
                         <Link href={'/'} className='w-full py-2 px-3 rounded flex items-center gap-3 hover:bg-gray-50 transition-all' transition-all>
-                            <FaRegUserCircle />
+                            <span className='w-7 h-7 rounded-full '>
+                                <Image src={'/image/avater/profile1.png'} className='w-7 h-7 rounded-full' height={80} width={80} alt='avater' />
+                            </span>
                             <span>Mohin Rana</span>
                         </Link>
                     </li>
                     <li>
                         <Link href={'/'} className='w-full py-2 px-3 rounded flex items-center gap-3 hover:bg-gray-50 transition-all'>
-                            <RiPagesFill />
+                            <span className='w-7 h-7 rounded-full flex items-center justify-center'>
+                                <RiPagesFill />
+                            </span>
                             <span>Pages</span>
                         </Link>
                     </li>
                     <li>
                         <Link href={'/'} className='w-full py-2 px-3 rounded flex items-center gap-3 hover:bg-gray-50 transition-all'>
-                            <LiaLayerGroupSolid size={18} />
+                            <span className='w-7 h-7 rounded-full flex items-center justify-center'>
+
+                                <LiaLayerGroupSolid size={18} />
+                            </span>
                             <span>Groups</span>
                         </Link>
                     </li>
                     <li>
                         <Link href={'/'} className='w-full py-2 px-3 rounded flex items-center gap-3 hover:bg-gray-50 transition-all'>
-                            <PiVideo size={18} />
+                            <span className='w-7 h-7 rounded-full flex items-center justify-center'>
+                                <PiVideo size={18} />
+                            </span>
                             <span>Videos</span>
                         </Link>
                     </li>
                     <li>
                         <Link href={'/'} className='w-full py-2 px-3 rounded flex items-center gap-3 hover:bg-gray-50 transition-all'>
-                            <IoGameController size={18} />
+                            <span className='w-7 h-7 rounded-full flex items-center justify-center'>
+                                <IoGameController size={18} />
+                            </span>
                             <span>Games</span>
                         </Link>
                     </li>

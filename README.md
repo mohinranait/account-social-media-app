@@ -38,7 +38,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 To learn more about Next.js, take a look at the following resources:
 
 - [Live](https://nextjs.org/docs) - Click and see live website
-- [Backend](https://nextjs.org/learn) - Click and see github
+- [Backend](https://github.com/mohinranait/account_social_server) - Click and see github
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 

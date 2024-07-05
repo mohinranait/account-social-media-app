@@ -13,6 +13,7 @@ module.exports = {
         'res3': '300px',
         'res4': '400px',
         'res5': '500px',
+        'res55': '550px',
         'res6': '600px',
         'res65': '650px',
         'res7': '700px',
