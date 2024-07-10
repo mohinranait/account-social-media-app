@@ -2,10 +2,15 @@
 import store from '@/redux/store'
 import React from 'react'
 import { Provider } from 'react-redux'
+import AuthProvider from './AuthProvider'
 
 const ReduxProvider = ({ children }) => {
     return (
-        <Provider store={store}>{children}</Provider>
+        <Provider store={store}>
+            <AuthProvider>
+                {children}
+            </AuthProvider>
+        </Provider>
     )
 }
 

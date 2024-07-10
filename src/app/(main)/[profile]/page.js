@@ -1,3 +1,4 @@
+'use client';
 import PrimaryButton from '@/components/buttons/PrimaryButton'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,8 +11,15 @@ import { CiCircleInfo } from "react-icons/ci";
 import { IoHeartSharp } from "react-icons/io5";
 import { IoLocationSharp } from "react-icons/io5";
 import { IoHome } from "react-icons/io5";
+import { useRouter } from 'next/navigation';
+
+
 
 const UserProfile = () => {
+    const router = useRouter()
+
+
+
     return (
         <>
             <div className='mt-4'>
@@ -70,8 +78,8 @@ const UserProfile = () => {
                     <hr />
                     <div className='flex items-center justify-center res5:justify-between px-10'>
                         <ul className='flex items-center py-1 gap-3'>
-                            <li><button className='text-base text-gray-500 px-2 res5:px-4  py-2'>Posts</button></li>
-                            <li><button className='text-base text-gray-500 px-2 res5:px-4  py-2'>About</button></li>
+                            <li><Link href={'/'} className='text-base text-gray-500 px-2 res5:px-4  py-2'>Posts</Link></li>
+                            <li><Link href={'/'} className='text-base text-gray-500 px-2 res5:px-4  py-2'>About</Link></li>
                             <li><button className='text-base text-gray-500 px-2 res5:px-4  py-2'>Photos</button></li>
                             <li><button className='text-base text-gray-500 px-2 res5:px-4  py-2'>Firends</button></li>
                         </ul>

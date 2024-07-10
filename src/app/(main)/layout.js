@@ -1,15 +1,10 @@
-import MainHeader from '@/shared/MainHeader'
+
+import LayoutComponent from '@/components/LayoutComponent'
 import React from 'react'
 
 const MainLayout = ({ children }) => {
   return (
-    <>
-      <MainHeader />
-      <main className=''>
-        {children}
-      </main>
-
-    </>
+    <LayoutComponent children={children} />
   )
 }
 

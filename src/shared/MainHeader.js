@@ -1,4 +1,4 @@
-
+'use client';
 import { BiLogoAdobe } from "react-icons/bi";
 import { IoIosSearch } from "react-icons/io";
 import { SlHome } from "react-icons/sl";
@@ -13,8 +13,25 @@ import { CiSettings } from "react-icons/ci";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 import Image from "next/image";
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { useDispatch, useSelector } from "react-redux";
+import useAxios from "@/hooks/useAxios";
+import { logoutUser } from "@/redux/auth/authSlice";
+import { useRouter } from "next/navigation";
 const MainHeader = () => {
-
+    const { user } = useSelector(state => state.auth)
+    const dispatch = useDispatch();
+    const axios = useAxios();
+    const router = useRouter();
+    const handleLogout = async () => {
+        try {
+            const res = await axios.post('/auth/logout', {});
+            if (res?.data?.success) {
+                dispatch(logoutUser())
+            }
+        } catch (error) {
+            console.log('logout faield');
+        }
+    }
     return (
         <header className="bg-primary top-0 sticky z-[99] py-3">
             <div>
@@ -83,7 +100,7 @@ const MainHeader = () => {
                                             <MenuButton>
                                                 <div className="flex items-center gap-1 cursor-pointer ">
                                                     <FaRegUserCircle size={25} className="text-white" />
-                                                    <span className="text-md text-white">Jhon</span>
+                                                    <span className="text-md text-white">{user?.name?.firstName}</span>
                                                 </div>
                                             </MenuButton>
                                             <MenuItems >
@@ -96,7 +113,7 @@ const MainHeader = () => {
                                                                 <span className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-300">
                                                                     <Image src={'/image/avater/profile1.png'} className="w-10 h-10 rounded-full" width={100} height={100} alt="avater" />
                                                                 </span>
-                                                                <span className="font-medium">Mohin Rana</span>
+                                                                <span className="font-medium">{user?.name?.firstName}</span>
                                                             </div>
                                                             <hr className=" border-gray-200 my-1  " />
 
@@ -126,7 +143,7 @@ const MainHeader = () => {
                                                             </div>
                                                             <div></div>
                                                         </div>
-                                                        <div className="flex items-center justify-between gap-1 hover:bg-gray-100 transition p-1 rounded cursor-pointer">
+                                                        <div onClick={handleLogout} className="flex items-center justify-between gap-1 hover:bg-gray-100 transition p-1 rounded cursor-pointer">
                                                             <div className="flex gap-2 items-center">
                                                                 <span className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200">
                                                                     <RiLogoutCircleRLine />

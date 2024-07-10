@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "@/provider/ReduxProvider";
+import { Toaster } from "react-hot-toast";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,7 +15,12 @@ export default function RootLayout({ children }) {
   return (
     <ReduxProvider>
       <html lang="en">
-        <body className={`${inter.className} bg-[#f2f2f2]`}>{children}</body>
+        <body className={`${inter.className} bg-[#f2f2f2]`}>
+
+          <Toaster />
+          {children}
+
+        </body>
       </html>
     </ReduxProvider>
 
