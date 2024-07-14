@@ -9,6 +9,8 @@ const AddFriendCard = () => {
             <div className='h-[50px] bg-gray-100 rounded relative'>
                 <span className='absolute right-1 top-1 w-6 h-6 rounded-full bg-gray-500 bg-opacity-15 cursor-pointer flex items-center justify-center'><IoCloseOutline /></span>
             </div>
+
+
             <div className='-mt-4 px-1 relative'>
                 <div className='flex gap-1  items-end'>
                     <img src="/image/avater/profile1.png" height={45} width={45} className='' alt="avater" />

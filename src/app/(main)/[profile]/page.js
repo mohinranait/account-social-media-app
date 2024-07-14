@@ -1,3 +1,4 @@
+'use client';
 import PostCard from '@/components/cards/PostCard';
 import { LiaBirthdayCakeSolid } from "react-icons/lia";
 import { CiCircleInfo } from "react-icons/ci";
@@ -7,10 +8,13 @@ import { IoHome } from "react-icons/io5";
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useContext } from 'react';
+import { ProfileContext } from '@/provider/ProfileProvider';
 
 
 
 const ProfilePage = () => {
+    const { profile } = useContext(ProfileContext);
     return (
 
         <div className='px-2 res5:w-[500px] res7:w-[600px] res9:w-[870px] res10:w-[950px]  grid res9:grid-cols-[350px,auto] gap-4 mx-auto mt-4  res10:px-10' >
@@ -59,14 +63,17 @@ const ProfilePage = () => {
                                     </p>
                                 </div>
                             </li>
-                            <li className='flex items-center gap-2'>
-                                <IoHeartSharp size={20} className='text-gray-600' />
-                                <div>
-                                    <p className='text-gray-500 flex gap-[3px]'>
-                                        Single
-                                    </p>
-                                </div>
-                            </li>
+                            {
+                                profile?.isRelation?.relationType && <li className='flex items-center gap-2'>
+                                    <IoHeartSharp size={20} className='text-gray-600' />
+                                    <div>
+                                        <p className='text-gray-500 flex gap-[3px]'>
+                                            {profile?.isRelation?.relationType}
+                                        </p>
+                                    </div>
+                                </li>
+                            }
+
                             <li className='flex items-center gap-2'>
                                 <Link href={'/'} className='py-1 w-full rounded-md inline-block px-3 text-center bg-gray-100 hover:bg-gray-200'>Edit Details</Link>
                             </li>
