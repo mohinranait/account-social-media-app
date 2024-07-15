@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { FaHome, FaPhoneAlt } from "react-icons/fa";
 import { MdModeEditOutline } from "react-icons/md";
 import UpdateRelation from '@/ui/list_forms/UpdateRelation';
+import UpdateHomeTown from '@/ui/list_forms/UpdateHomeTown';
+import UpdateCurrentCity from '@/ui/list_forms/UpdateCurrentCity';
 
 const Overview = () => {
 
@@ -32,58 +34,9 @@ const Overview = () => {
                 </div>
                 <div> </div>
             </li>
-            <li>
-                <div className='flex gap-4  items-center'>
-                    <div>
-                        <div className='w-10 h-10 rounded-full   flex items-center justify-center'>
-                            <FaHome size={28} className='text-gray-700' />
-                        </div>
-                    </div>
-                    <div className='w-full'>
-                        <div>
-                            <p className='text-gray-500 flex gap-[3px]'>
-                                Live in
-                                <span className=' text-gray-900'>Bangladesh </span>
-                            </p>
-                        </div>
-                    </div>
-                    <div className='flex items-center gap-2'>
-                        <span className='w-8 h-8 cursor-pointer rounded-full bg-gray-100 flex items-center justify-center'>
-                            <IoEarthSharp />
-                        </span>
-                        <span className='w-10 h-10 cursor-pointer rounded-full bg-gray-100 flex items-center justify-center'>
-                            <TbDots />
-                        </span>
-                    </div>
-                </div>
-                <div></div>
-            </li>
-            <li>
-                <div className='flex gap-4  items-center'>
-                    <div>
-                        <div className='w-10 h-10 rounded-full   flex items-center justify-center'>
-                            <IoLocationSharp size={28} className='text-gray-700' />
-                        </div>
-                    </div>
-                    <div className='w-full'>
 
-                        <p className='text-gray-500 flex gap-[3px]'>
-                            From
-                            <span className=' text-gray-900'>Barishal</span>
-                        </p>
-
-                    </div>
-                    <div className='flex items-center gap-2'>
-                        <span className='w-8 h-8 cursor-pointer rounded-full bg-gray-100 flex items-center justify-center'>
-                            <IoEarthSharp />
-                        </span>
-                        <span className='w-10 h-10 cursor-pointer rounded-full bg-gray-100 flex items-center justify-center'>
-                            <TbDots />
-                        </span>
-                    </div>
-                </div>
-                <div></div>
-            </li>
+            <UpdateCurrentCity />
+            <UpdateHomeTown />
             <UpdateRelation />
             <li>
                 <div className='flex gap-4  items-center'>

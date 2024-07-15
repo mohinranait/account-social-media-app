@@ -10,11 +10,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useContext } from 'react';
 import { ProfileContext } from '@/provider/ProfileProvider';
+import { getMonthFormat } from '@/utils/dateFormat';
 
 
 
 const ProfilePage = () => {
     const { profile } = useContext(ProfileContext);
+    const { user } = useSelector(state => state.auth);
+
     return (
 
         <div className='px-2 res5:w-[500px] res7:w-[600px] res9:w-[870px] res10:w-[950px]  grid res9:grid-cols-[350px,auto] gap-4 mx-auto mt-4  res10:px-10' >
@@ -34,35 +37,42 @@ const ProfilePage = () => {
                                     </p>
                                 </div>
                             </li>
-                            <li className='flex items-center gap-2'>
-                                <LiaBirthdayCakeSolid size={20} className='text-gray-600' />
-                                <div>
-                                    <p className='text-gray-500 flex gap-[3px]'>
-                                        Birthday
-                                        <span className=' text-gray-900'>20 Jun, 2024</span>
+                            {
+                                profile?.birthday?.day && profile?.birthday?.month && <li className='flex items-center gap-2'>
+                                    <LiaBirthdayCakeSolid size={20} className='text-gray-600' />
+                                    <div>
+                                        <p className='text-gray-500 flex gap-[3px]'>
+                                            Birthday
+                                            <span className=' text-gray-900'>{profile?.birthday?.day} {getMonthFormat(profile?.birthday?.month, 'short')}, {profile?.birthday?.year}</span>
+                                        </p>
+                                    </div>
+                                </li>
+                            }
 
-                                    </p>
-                                </div>
-                            </li>
-                            <li className='flex items-center gap-2'>
-                                <IoHome size={20} className='text-gray-600' />
-                                <div>
-                                    <p className='text-gray-500 flex gap-[3px]'>
-                                        Live in
-                                        <span className=' text-gray-900'>Bangladesh </span>
+                            {
+                                user?.currentCity?.value && <li className='flex items-center gap-2'>
+                                    <IoHome size={20} className='text-gray-600' />
+                                    <div>
+                                        <p className='text-gray-500 flex gap-[3px]'>
+                                            Live in
+                                            <span className=' text-gray-900'>{user?.currentCity?.value}</span>
+                                        </p>
+                                    </div>
+                                </li>
+                            }
 
-                                    </p>
-                                </div>
-                            </li>
-                            <li className='flex items-center gap-2'>
-                                <IoLocationSharp size={20} className='text-gray-600' />
-                                <div>
-                                    <p className='text-gray-500 flex gap-[3px]'>
-                                        From
-                                        <span className=' text-gray-900'>Barishal</span>
-                                    </p>
-                                </div>
-                            </li>
+                            {
+                                user?.homeTown?.value && <li className='flex items-center gap-2'>
+                                    <IoLocationSharp size={20} className='text-gray-600' />
+                                    <div>
+                                        <p className='text-gray-500 flex gap-[3px]'>
+                                            From
+                                            <span className=' text-gray-900'>{user?.homeTown?.value}</span>
+                                        </p>
+                                    </div>
+                                </li>
+                            }
+
                             {
                                 profile?.isRelation?.relationType && <li className='flex items-center gap-2'>
                                     <IoHeartSharp size={20} className='text-gray-600' />

@@ -5,7 +5,7 @@ import React from 'react'
 
 const AboutPageLayout = ({ children }) => {
     const params = useParams();
-    console.log(params?.profile);
+    ;
     return (
         <div className='px-2  res5:w-[500px] res7:w-[600px] res9:w-[870px] res10:w-[950px]    mx-auto mt-4  res10:px-10' >
             <div className='bg-white grid res9:grid-cols-[350px,auto]'>

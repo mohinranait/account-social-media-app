@@ -132,18 +132,21 @@ const UpdateRelation = () => {
                             {profile?.isRelation?.relationType}
                         </p>
                     </div>
-                    <div className='flex items-center gap-2'>
-                        <span className='w-8 h-8 cursor-pointer rounded-full bg-gray-100 flex items-center justify-center'>
-                            {
-                                profile?.isRelation?.status == 'Public' ? <IoEarthSharp size={18} /> :
-                                    profile?.isRelation?.status == 'Friends' ? <HiUsers size={18} /> :
-                                        <FaLock size={18} />
-                            }
-                        </span>
-                        <span onClick={() => setIsEdit(true)} className='w-10 h-10 cursor-pointer rounded-full bg-gray-100 flex items-center justify-center'>
-                            <MdModeEditOutline />
-                        </span>
-                    </div>
+                    {
+                        profile?._id === user?._id && <div className='flex items-center gap-2'>
+                            <span className='w-8 h-8 cursor-pointer rounded-full bg-gray-100 flex items-center justify-center'>
+                                {
+                                    profile?.isRelation?.status == 'Public' ? <IoEarthSharp size={18} /> :
+                                        profile?.isRelation?.status == 'Friends' ? <HiUsers size={18} /> :
+                                            <FaLock size={18} />
+                                }
+                            </span>
+                            <span onClick={() => setIsEdit(true)} className='w-10 h-10 cursor-pointer rounded-full bg-gray-100 flex items-center justify-center'>
+                                <MdModeEditOutline />
+                            </span>
+                        </div>
+                    }
+
                 </div> : <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
                     <div className='relative'>
 

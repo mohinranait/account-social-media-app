@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 export const ProfileContext = createContext(null);
 const ProfileProvider = ({ children }) => {
     const [profile, setProfile] = useState(null);
+    const [loadingProfile, setLoadingProfile] = useState(false)
 
 
     const params = useParams();
@@ -36,7 +37,10 @@ const ProfileProvider = ({ children }) => {
 
 
     const obj = {
-        profile, setProfile,
+        profile,
+        setProfile,
+        loadingProfile,
+        setLoadingProfile
     }
 
     return (

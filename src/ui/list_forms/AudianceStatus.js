@@ -18,6 +18,7 @@ const AudianceStatus = ({ setStatus, status, setIsAudienceModal, setIsSecondModa
         }
     }
 
+
     useEffect(() => {
         if (status) {
             setIsStatus(status)
@@ -48,7 +49,7 @@ const AudianceStatus = ({ setStatus, status, setIsAudienceModal, setIsSecondModa
                     <div>
                         <ul>
                             <li>
-                                <label htmlFor='public' className='w-full  justify-between py-2 px-3 rounded flex items-center gap-2 hover:bg-gray-100 transition-all' >
+                                <label onClick={(e) => setIsStatus('Public')} className='w-full cursor-pointer  justify-between py-2 px-3 rounded flex items-center gap-2 hover:bg-gray-100 transition-all' >
                                     <div className='flex gap-2 items-center'>
                                         <span className='relative w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center'>
                                             <IoEarthSharp size={28} />
@@ -58,11 +59,13 @@ const AudianceStatus = ({ setStatus, status, setIsAudienceModal, setIsSecondModa
                                             <p className='text-gray-400 text-sm'>Anyon on can see your post</p>
                                         </div>
                                     </div>
-                                    <input type="radio" id='public' onChange={(e) => setIsStatus('Public')} checked={isStatus == 'Public'} name='canSeeAudience' value={'Public'} />
+                                    <span className={`w-4 h-4 p-[2px] rounded-full border   flex items-center justify-center ${isStatus == "Public" ? 'border-primary' : 'border-gray-500'} `}>
+                                        {isStatus == "Public" && <span className='bg-primary w-full h-full rounded-full'></span>}
+                                    </span>
                                 </label>
                             </li>
                             <li>
-                                <label htmlFor='friends' className='w-full  justify-between py-2 px-3 rounded flex items-center gap-2 hover:bg-gray-100 transition-all' >
+                                <label onClick={(e) => setIsStatus('Friends')} className='w-full cursor-pointer  justify-between py-2 px-3 rounded flex items-center gap-2 hover:bg-gray-100 transition-all' >
                                     <div className='flex gap-2 items-center'>
                                         <span className='relative w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center'>
                                             <FaUserLarge size={28} />
@@ -72,11 +75,14 @@ const AudianceStatus = ({ setStatus, status, setIsAudienceModal, setIsSecondModa
                                             <p className='text-gray-400 text-sm'>Only your firends can see the post</p>
                                         </div>
                                     </div>
-                                    <input type="radio" id='friends' onChange={(e) => setIsStatus('Friends')} checked={isStatus == 'Friends'} name='canSeeAudience' value={'Friends'} />
+
+                                    <span className={`w-4 h-4 p-[2px] rounded-full border   flex items-center justify-center ${isStatus == "Friends" ? 'border-primary' : 'border-gray-500'} `}>
+                                        {isStatus == "Friends" && <span className='bg-primary w-full h-full rounded-full'></span>}
+                                    </span>
                                 </label>
                             </li>
                             <li>
-                                <label htmlFor='onlyMe' className='w-full  justify-between py-2 px-3 rounded flex items-center gap-2 hover:bg-gray-100 transition-all' >
+                                <label onClick={(e) => setIsStatus('Onlyme')} className='w-full  cursor-pointer justify-between py-2 px-3 rounded flex items-center gap-2 hover:bg-gray-100 transition-all' >
                                     <div className='flex gap-2 items-center'>
                                         <span className='relative w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center'>
                                             <FaLock size={28} />
@@ -86,7 +92,9 @@ const AudianceStatus = ({ setStatus, status, setIsAudienceModal, setIsSecondModa
                                             <p className='text-gray-400 text-sm'>This post is private, can see only you</p>
                                         </div>
                                     </div>
-                                    <input type="radio" id='onlyMe' onChange={(e) => setIsStatus('Onlyme')} checked={isStatus == 'Onlyme'} name='canSeeAudience' value={'Onlyme'} />
+                                    <span className={`w-4 h-4 p-[2px] rounded-full border   flex items-center justify-center ${isStatus == "Onlyme" ? 'border-primary' : 'border-gray-500'} `}>
+                                        {isStatus == "Onlyme" && <span className='bg-primary w-full h-full rounded-full'></span>}
+                                    </span>
                                 </label>
                             </li>
                         </ul>

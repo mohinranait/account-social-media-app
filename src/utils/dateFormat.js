@@ -1,9 +1,8 @@
 // get month by number
-export const getMonth = (value, action = 'short') => {
-    // action = {full: January, short: Jan }
+export const getMonthFormat = (value, action = 'short') => {
 
     let month = '';
-    switch (value) {
+    switch (Number(value)) {
         case 0:
             month = action != 'short' ? "January" : 'Jan';
             break;
