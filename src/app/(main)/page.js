@@ -1,5 +1,6 @@
 
 import PostCard from '@/components/cards/PostCard'
+import PostContainer from '@/components/cards/PostContainer';
 import SuggestsCurd from '@/components/cards/suggests/SuggestsCurd'
 import HomeLeftSidebar from '@/components/sidebars/HomeLeftSidebar'
 import HomeRightSidebar from '@/components/sidebars/HomeRightSidebar'
@@ -24,9 +25,7 @@ const HomePage = () => {
             <PostCreator />
             <div className=' bg-gray-100 md:mx-[50px] lg:mx-0 res12:px-[50px] flex flex-col gap-5 '>
               <SuggestsCurd />
-              <PostCard />
-              <PostCard />
-              <PostCard />
+              <PostContainer />
             </div>
           </div>
           <div className='hidden res9:block col-span-1'>

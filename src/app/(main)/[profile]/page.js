@@ -11,6 +11,7 @@ import Image from 'next/image';
 import { useContext } from 'react';
 import { ProfileContext } from '@/provider/ProfileProvider';
 import { getMonthFormat } from '@/utils/dateFormat';
+import PostContainer from '@/components/cards/PostContainer';
 
 
 
@@ -147,13 +148,7 @@ const ProfilePage = () => {
             </div>
             <div className=''>
                 <div className='flex flex-col gap-4'>
-                    <PostCard />
-                    <PostCard />
-                    <PostCard />
-                    <PostCard />
-                    <PostCard />
-                    <PostCard />
-                    <PostCard />
+                    <PostContainer />
                 </div>
             </div>
         </div>

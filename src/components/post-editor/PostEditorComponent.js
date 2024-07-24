@@ -1,24 +1,52 @@
 'use client';
 import React, { useState } from 'react'
-import { IoCloseOutline, IoEarthSharp } from "react-icons/io5";
+import { IoCloseOutline } from "react-icons/io5";
 import { MdAddToPhotos } from "react-icons/md";
 import { FaUserTag } from "react-icons/fa";
 import { BsEmojiFrown } from "react-icons/bs";
 import PrimaryButton from '../buttons/PrimaryButton';
-import { MdArrowBack } from "react-icons/md";
-import { IoIosSearch } from 'react-icons/io';
-import Image from 'next/image';
-import { FaLock } from "react-icons/fa6";
-import { FaUserLarge } from "react-icons/fa6";
 import { MdArrowDropDown } from "react-icons/md";
 import AudianceStatus from '@/ui/list_forms/AudianceStatus';
+import StatusIconWithText from '@/ui/StatusIconWithText';
+import SearchTagUserByName from '@/ui/common/SearchTagUserByName';
+import useCreatePost from '@/hooks/useCreatePost';
+import { useSelector } from 'react-redux';
+import useAxios from '@/hooks/useAxios';
 
 const PostEditorComponent = ({ setIsOpen }) => {
+    const { post, setPost } = useCreatePost();
+    const { user } = useSelector(state => state.auth);
+
+    const axios = useAxios();
     const [isSecondModal, setIsSecondModal] = useState(false)
     const [isFile, setIsFile] = useState(false)
     const [isTagModal, setIsTagModal] = useState(false)
     const [isAudienceModal, setIsAudienceModal] = useState(false)
+
+
+
+
+    // handle Submit post
+    const handleSubmitPost = async () => {
+        let postObject = {
+            ...post,
+            owner: user?._id,
+        }
+
+
+        try {
+            const res = await axios.post(`/post/create`, postObject)
+            if (res?.data.success) {
+                setIsOpen(false)
+                setPost({})
+            }
+        } catch (error) {
+
+        }
+    }
+
     return (
+
         <div className='w-[500px] overflow-x-hidden '>
             <div className={`w-[1000px] grid grid-cols-2 items-center transition duration-75   ${isSecondModal ? '-translate-x-[500px]' : 'translate-x-[0px]'} `}>
                 {/* First modal  */}
@@ -40,16 +68,17 @@ const PostEditorComponent = ({ setIsOpen }) => {
                                     <div onClick={() => {
                                         setIsSecondModal(true);
                                         setIsAudienceModal(true)
-                                    }} className='flex items-center gap-1 bg-gray-100 rounded  px-2 cursor-pointer '>
-                                        <IoEarthSharp size={13} />
-                                        <span className='text-sm'>Public</span>
+                                    }} className='flex items-center gap-1  bg-gray-100 rounded  px-2 py-1 cursor-pointer '>
+                                        {/* <IoEarthSharp size={13} />
+                                        <span className='text-sm'>Public</span> */}
+                                        <StatusIconWithText status={user?.status} iconStyle={'text-gray-800'} textStyle="text-gray-800 !text-xs" size={16} />
                                         <MdArrowDropDown size={20} />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <textarea name="" id="" placeholder='Write your mind' className='w-full mb-3 min-h-8  focus-visible:outline-none' >
+                            <textarea value={post?.text} onChange={(e) => setPost(prev => ({ ...prev, text: e.target.value }))} name="" id="" placeholder='Write your mind' className='w-full mb-3 min-h-8  focus-visible:outline-none' >
 
                             </textarea>
                             {
@@ -88,6 +117,7 @@ const PostEditorComponent = ({ setIsOpen }) => {
                             <PrimaryButton
                                 type='button'
                                 className={'w-full py-[10px]'}
+                                onClick={() => handleSubmitPost()}
                             >
                                 Next
                             </PrimaryButton>
@@ -100,209 +130,21 @@ const PostEditorComponent = ({ setIsOpen }) => {
                     {/* Tag firends modal */}
                     {
                         isTagModal &&
-                        <div className=' '>
-                            <div className='relative  py-3 border-b'>
-                                <span onClick={() => {
-                                    setIsSecondModal(false);
-                                    setIsTagModal(false)
-                                }} className='w-10 h-10 rounded-full cursor-pointer flex items-center justify-center bg-gray-100 absolute left-3 top-[6px]'>
-                                    <MdArrowBack size={20} />
-                                </span>
-                                <p className='text-center text-xl font-medium'>Tag people</p>
-                            </div>
-                            <div className='flex flex-col gap-4 p-4'>
-                                <div className='flex items-center gap-3'>
-                                    <div className='flex w-full gap-1 items-center bg-gray-100 rounded-2xl py-2 px-2'>
-                                        <IoIosSearch size={20} />
-                                        <input type="text" className='w-full text-sm font-light text-gray-600  bg-transparent' placeholder='Search...' />
-                                    </div>
-                                    <span className='text-primary'>Done</span>
-                                </div>
-                                <div>
-                                    <p className='text-gray-600 text-md mb-1'>Tagged</p>
-                                    <ul className='flex items-center flex-wrap gap-2 border p-2 rounded-md max-h-24 overflow-y-auto '>
-                                        <li>
-                                            <button className='w-full pl-2 pr-1 rounded flex items-center gap-2 bg-blue-50 text-primary transition-all' >
-                                                <span className=' py-1'>Mohin Rana</span>
-                                                <span className='w-[25px] h-[25px]  rounded-full flex items-center justify-center hover:bg-gray-200'>
-                                                    <IoCloseOutline size={20} />
-                                                </span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button className='w-full pl-2 pr-1 rounded flex items-center gap-2 bg-blue-50 text-primary transition-all' >
-                                                <span className=' py-1'>Mohin Rana</span>
-                                                <span className='w-[25px] h-[25px]  rounded-full flex items-center justify-center hover:bg-gray-200'>
-                                                    <IoCloseOutline size={20} />
-                                                </span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button className='w-full pl-2 pr-1 rounded flex items-center gap-2 bg-blue-50 text-primary transition-all' >
-                                                <span className=' py-1'>Mohin Rana</span>
-                                                <span className='w-[25px] h-[25px]  rounded-full flex items-center justify-center hover:bg-gray-200'>
-                                                    <IoCloseOutline size={20} />
-                                                </span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button className='w-full pl-2 pr-1 rounded flex items-center gap-2 bg-blue-50 text-primary transition-all' >
-                                                <span className=' py-1'>Mohin Rana</span>
-                                                <span className='w-[25px] h-[25px]  rounded-full flex items-center justify-center hover:bg-gray-200'>
-                                                    <IoCloseOutline size={20} />
-                                                </span>
-                                            </button>
-                                        </li>
-
-                                        <li>
-                                            <button className='w-full pl-2 pr-1 rounded flex items-center gap-2 bg-blue-50 text-primary transition-all' >
-                                                <span className=' py-1'>Mohin Rana</span>
-                                                <span className='w-[25px] h-[25px]  rounded-full flex items-center justify-center hover:bg-gray-200'>
-                                                    <IoCloseOutline size={20} />
-                                                </span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button className='w-full pl-2 pr-1 rounded flex items-center gap-2 bg-blue-50 text-primary transition-all' >
-                                                <span className=' py-1'>Mohin Rana</span>
-                                                <span className='w-[25px] h-[25px]  rounded-full flex items-center justify-center hover:bg-gray-200'>
-                                                    <IoCloseOutline size={20} />
-                                                </span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button className='w-full pl-2 pr-1 rounded flex items-center gap-2 bg-blue-50 text-primary transition-all' >
-                                                <span className=' py-1'>Mohin Rana</span>
-                                                <span className='w-[25px] h-[25px]  rounded-full flex items-center justify-center hover:bg-gray-200'>
-                                                    <IoCloseOutline size={20} />
-                                                </span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <p className='text-gray-600 text-md mb-1'>Suggestions</p>
-                                    <ul>
-                                        <li>
-                                            <a href={'/'} className='w-full py-2 px-3 rounded flex items-center gap-2 hover:bg-gray-100 transition-all' >
-                                                <span className='relative w-10 h-10 rounded-full'>
-                                                    <Image src={'/image/avater/profile1.png'} className='w-10 h-10' alt='Avater' width={40} height={40} />
-                                                </span>
-                                                <span className='text-gray-900'>Mohin Rana</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href={'/'} className='w-full py-2 px-3 rounded flex items-center gap-2 hover:bg-gray-100 transition-all' >
-                                                <span className='relative w-10 h-10 rounded-full'>
-                                                    <Image src={'/image/avater/profile1.png'} className='w-10 h-10' alt='Avater' width={40} height={40} />
-                                                </span>
-                                                <span className='text-gray-900'>Mohin Rana</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href={'/'} className='w-full py-2 px-3 rounded flex items-center gap-2 hover:bg-gray-100 transition-all'>
-                                                <span className='relative w-10 h-10 rounded-full'>
-                                                    <Image src={'/image/avater/profile1.png'} className='w-10 h-10' alt='Avater' width={40} height={40} />
-                                                </span>
-                                                <span className='text-gray-900'>Mohin Rana</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <SearchTagUserByName setIsSecondModal={setIsSecondModal} setIsTagModal={setIsTagModal} />
                     }
+
+
                     {/* Select post audience */}
                     {
                         isAudienceModal &&
-                        <AudianceStatus setIsAudienceModal={setIsAudienceModal} setIsSecondModal={setIsSecondModal} />
-
-                        // <div className=' '>
-                        //     <div className='relative  py-3 border-b'>
-                        //         <span onClick={() => {
-                        //             setIsSecondModal(false);
-                        //             setIsAudienceModal(false)
-                        //         }} className='w-10 h-10 rounded-full cursor-pointer flex items-center justify-center bg-gray-100 absolute left-3 top-[6px]'>
-                        //             <MdArrowBack size={20} />
-                        //         </span>
-                        //         <p className='text-center text-xl font-medium'>Post Audience</p>
-                        //     </div>
-                        //     <div className='relative'>
-                        //         <div className='h-[300px] overflow-y-auto p-4 pb-8'>
-                        //             <div className='mb-3'>
-                        //                 <p className='text-lg text-gray-700 font-medium'>Who can see your post?</p>
-                        //                 <p className='text-gray-400 text-sm font-normal'>Your post will show up in Feed, on your profile and in search results.
-                        //                     Your default audience is set to Public, but you can change the audience of this specific post.</p>
-                        //             </div>
-
-                        //             <div>
-                        //                 <ul>
-                        //                     <li>
-                        //                         <label htmlFor='public' className='w-full  justify-between py-2 px-3 rounded flex items-center gap-2 hover:bg-gray-100 transition-all' >
-                        //                             <div className='flex gap-2 items-center'>
-                        //                                 <span className='relative w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center'>
-                        //                                     <IoEarthSharp size={28} />
-                        //                                 </span>
-                        //                                 <div>
-                        //                                     <p className='text-gray-900'>Public</p>
-                        //                                     <p className='text-gray-400 text-sm'>Anyon on can see your post</p>
-                        //                                 </div>
-                        //                             </div>
-                        //                             <input type="radio" id='public' name='canSeeAudience' value={'Public'} />
-                        //                         </label>
-                        //                     </li>
-                        //                     <li>
-                        //                         <label htmlFor='friends' className='w-full  justify-between py-2 px-3 rounded flex items-center gap-2 hover:bg-gray-100 transition-all' >
-                        //                             <div className='flex gap-2 items-center'>
-                        //                                 <span className='relative w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center'>
-                        //                                     <FaUserLarge size={28} />
-                        //                                 </span>
-                        //                                 <div>
-                        //                                     <p className='text-gray-900'>Friends</p>
-                        //                                     <p className='text-gray-400 text-sm'>Only your firends can see the post</p>
-                        //                                 </div>
-                        //                             </div>
-                        //                             <input type="radio" id='friends' name='canSeeAudience' value={'Friends'} />
-                        //                         </label>
-                        //                     </li>
-                        //                     <li>
-                        //                         <label htmlFor='onlyMe' className='w-full  justify-between py-2 px-3 rounded flex items-center gap-2 hover:bg-gray-100 transition-all' >
-                        //                             <div className='flex gap-2 items-center'>
-                        //                                 <span className='relative w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center'>
-                        //                                     <FaLock size={28} />
-                        //                                 </span>
-                        //                                 <div>
-                        //                                     <p className='text-gray-900'>Only me</p>
-                        //                                     <p className='text-gray-400 text-sm'>This post is private, can see only you</p>
-                        //                                 </div>
-                        //                             </div>
-                        //                             <input type="radio" id='onlyMe' name='canSeeAudience' value={'onlyMe'} />
-                        //                         </label>
-                        //                     </li>
-                        //                 </ul>
-                        //             </div>
-                        //         </div>
-
-                        //     </div>
-                        //     <div className='h-14  bottom-0 bg-white w-full left-0 flex items-center justify-between border-t border-gray-100'>
-                        //         <span></span>
-                        //         <div className='flex justify-end items-center gap-3 px-4 pr-8'>
-                        //             <PrimaryButton onClick={() => {
-                        //                 setIsSecondModal(false);
-                        //                 setIsAudienceModal(false)
-                        //             }}
-                        //                 type='button'
-                        //                 color='text-primary'
-                        //                 bg={'bg-primaryLight'}
-                        //                 className={'px-8 '}>
-                        //                 Cancel
-                        //             </PrimaryButton>
-                        //             <PrimaryButton type='button' className={'px-8'}>
-                        //                 Done
-                        //             </PrimaryButton>
-                        //         </div>
-                        //     </div>
-                        // </div>
+                        <AudianceStatus
+                            setStatus={(e) => {
+                                setPost(prev => ({ ...prev, status: e }))
+                            }}
+                            status={post?.status}
+                            setIsAudienceModal={setIsAudienceModal}
+                            setIsSecondModal={setIsSecondModal}
+                        />
                     }
                 </div>
             </div>
@@ -310,6 +152,7 @@ const PostEditorComponent = ({ setIsOpen }) => {
 
 
         </div>
+
     )
 }
 

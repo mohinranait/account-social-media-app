@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { GoTriangleDown } from "react-icons/go";
 
-const SelectElement = ({ options, value, setValue, placeholder }) => {
+const SelectElement = ({ options, value, setValue, placeholder, css }) => {
     const [isOpen, setIsOpen] = useState(false)
     return (
         <div className='relative'>
-            <div onClick={() => setIsOpen(!isOpen)} className='flex  gap-2 justify-between items-center py-2 px-3 rounded bg-gray-200 text-gray-900 cursor-pointer'>
-                <span>{value || placeholder || "Select dropdown"}</span>
+            <div onClick={() => setIsOpen(!isOpen)} className={`flex  gap-2 justify-between items-center py-2 px-3 rounded bg-gray-200 text-gray-900 cursor-pointer ${css}`}>
+                <span>{options?.find(x => x.value == value)?.label || value || placeholder || "Select dropdown"}</span>
                 <span className='flex items-center'><GoTriangleDown /></span>
             </div>
             {

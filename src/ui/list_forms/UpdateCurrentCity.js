@@ -34,7 +34,7 @@ const UpdateCurrentCity = () => {
 
     }
 
-    console.log(user);
+
 
     // handle submit
     const handleSubmit = async e => {
@@ -68,7 +68,7 @@ const UpdateCurrentCity = () => {
         }
     }, [user])
 
-    console.log(user?.currentCity?.value);
+
 
     return (
         <li>
@@ -97,7 +97,7 @@ const UpdateCurrentCity = () => {
                     </div>
                 }
 
-            </div> : <div className='flex gap-4  items-center'>
+            </div> : profile?._id === user?._id && <div className='flex gap-4  items-center'>
                 <div>
                     <div className='w-10 h-10 rounded-full   flex items-center justify-center'>
                         <FaHome size={28} className='text-gray-700' />
