@@ -10,6 +10,7 @@ import { GoComment } from "react-icons/go";
 import StatusIcon from '@/ui/StatusIcon';
 import PostCommentComponent from './PostCommentComponent';
 import ReactionComponent from '@/ui/common/ReactionComponent';
+import PostReactionComponent from './PostReactionComponent';
 
 const PostCard = ({ post }) => {
     const { _id, text, status, owner } = post || {}
@@ -50,15 +51,8 @@ const PostCard = ({ post }) => {
             <div className='py-3 px-3'>
                 <ul className='flex gap-5 items-center justify-center'>
 
-                    <li className='w-full relative peer group  '>
-                        <button className='flex w-full justify-center py-[5px] px-4 hover:bg-gray-100 rounded-sm items-center gap-1'>
-                            <AiOutlineLike className='text-gray-500' />
-                            <span className='text-sm text-gray-500'>Like</span>
-                        </button>
-                        <div className='absolute left-0 -top-[47px] opacity-0 group-hover:opacity-100 group-hover:delay-500 '>
-                            <ReactionComponent />
-                        </div>
-                    </li>
+                    <PostReactionComponent post={post} />
+
                     <PostCommentComponent post={post}>
                         <button className='flex w-full justify-center py-[5px] px-4 hover:bg-gray-100 rounded-sm items-center gap-1'>
                             <GoComment className='text-gray-500' />

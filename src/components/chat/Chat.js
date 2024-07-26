@@ -1,34 +1,26 @@
 'use client';
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { FiPhoneCall } from 'react-icons/fi'
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
-import { FaCamera, FaImage, FaVoicemail } from "react-icons/fa";
-import PrimaryButton from '../buttons/PrimaryButton';
-import { MdOutlineEmojiEmotions } from "react-icons/md";
-import EmojiPicker from "emoji-picker-react";
-import dynamic from 'next/dynamic';
-// import MdxEditorComponent from '';
-const Editor = dynamic(() => import('../editor/MdxEditorComponent'), {
-    // Make sure we turn SSR off
-    ssr: false
-})
+import { useDispatch, useSelector } from 'react-redux';
+import MessageEditor from './MessageEditor';
+import { fetchAllMessageByConversation } from '@/redux/chat/chatSlice';
+import MessageItems from './message/MessageItems';
+
 
 
 const Chat = ({ setIsDetails, isDetails }) => {
-    const [isEmoji, setIsEmoji] = useState(false)
-    const [value, setValue] = useState('handle message')
-    // handle emoji 
-    const handleEmoji = (e) => {
-        console.log(e?.emoji);
-        setIsEmoji(false)
-    }
+    const { convercation, messages } = useSelector(state => state.chat);
+    const { user } = useSelector(state => state.auth);
+    const dispatch = useDispatch();
 
-    // get value
-    const handleGetValue = () => {
-        console.log(value);
-        setValue('')
-    }
-    console.log(value);
+    useEffect(() => {
+        if (convercation?._id) {
+            dispatch(fetchAllMessageByConversation({ reciver: convercation }))
+        }
+
+    }, [convercation])
+
     return (
         <div className={`chat  h-full  flex-col border-l border-r border-gray-200 ${isDetails ? 'hidden' : 'hidden res8:flex'} `} >
             <div className='top'>
@@ -39,7 +31,7 @@ const Chat = ({ setIsDetails, isDetails }) => {
                             <img src="/image/avater/profile1.png" className='w-9 h-9 rounded-full' alt="avater" />
                         </span>
                         <div>
-                            <p className='tex-base font-medium text-gray-700'>Mohin Rana</p>
+                            <p className='tex-base font-medium text-gray-700'>{convercation?.name?.fullName || ''}</p>
                             <p className='text-xs text-gray-400'>5h ago</p>
                         </div>
                     </div>
@@ -56,125 +48,14 @@ const Chat = ({ setIsDetails, isDetails }) => {
             <div className="center overflow-y-scroll bg-black bg-opacity-50 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('/image/theme/theme.png')`, }}>
                 <div className='h-full '>
                     <div className='px-4 flex flex-col gap-4 py-5 '>
-                        <div>
-                            <div className='w-[80%] flex gap-2'>
-                                <span>
-                                    <div className='w-5 h-5 rounded-full'>
-                                        <img src="/image/avater/profile1.png" className='w-5 h-5 rounded-full' alt="" />
-                                    </div>
-                                </span>
-                                <div className='bg-purple-500 text-sm text-white  backdrop-filter px-2 py-1 rounded-md'>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex justify-end'>
-                            <div className='w-[80%] flex gap-2'>
 
-                                <div className='bg-primary text-white px-2 py-1 rounded-md'>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                </div>
-                                <span>
-                                    <div className='w-5 h-5 rounded-full'>
-                                        <img src="/image/avater/profile1.png" className='w-5 h-5 rounded-full' alt="" />
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
+                        {
+                            messages?.map(message => <MessageItems key={message?._id} message={message} />)
+                        }
 
-                        <div>
-                            <div className='w-[80%] flex gap-2'>
-                                <span>
-                                    <div className='w-5 h-5 rounded-full'>
-                                        <img src="/image/avater/profile1.png" className='w-5 h-5 rounded-full' alt="" />
-                                    </div>
-                                </span>
-                                <div className='bg-purple-500 text-sm text-white  backdrop-filter px-2 py-1 rounded-md'>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex justify-end'>
-                            <div className='w-[80%] flex gap-2'>
 
-                                <div className='bg-primary text-white px-2 py-1 rounded-md'>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                </div>
-                                <span>
-                                    <div className='w-5 h-5 rounded-full'>
-                                        <img src="/image/avater/profile1.png" className='w-5 h-5 rounded-full' alt="" />
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
 
-                        <div>
-                            <div className='w-[80%] flex gap-2'>
-                                <span>
-                                    <div className='w-5 h-5 rounded-full'>
-                                        <img src="/image/avater/profile1.png" className='w-5 h-5 rounded-full' alt="" />
-                                    </div>
-                                </span>
-                                <div className='bg-purple-500 text-sm text-white  backdrop-filter px-2 py-1 rounded-md'>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex justify-end'>
-                            <div className='w-[80%] flex gap-2'>
 
-                                <div className='bg-primary text-white px-2 py-1 rounded-md'>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                </div>
-                                <span>
-                                    <div className='w-5 h-5 rounded-full'>
-                                        <img src="/image/avater/profile1.png" className='w-5 h-5 rounded-full' alt="" />
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div className='w-[80%] flex gap-2'>
-                                <span>
-                                    <div className='w-5 h-5 rounded-full'>
-                                        <img src="/image/avater/profile1.png" className='w-5 h-5 rounded-full' alt="" />
-                                    </div>
-                                </span>
-                                <div className='bg-purple-500 text-sm text-white  backdrop-filter px-2 py-1 rounded-md'>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                </div>
-                            </div>
-                        </div>
-                        <div className='flex justify-end'>
-                            <div className='w-[80%] flex gap-2'>
-
-                                <div className='bg-primary text-white px-2 py-1 rounded-md'>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, ea.
-                                </div>
-                                <span>
-                                    <div className='w-5 h-5 rounded-full'>
-                                        <img src="/image/avater/profile1.png" className='w-5 h-5 rounded-full' alt="" />
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
 
 
                     </div>
@@ -182,30 +63,7 @@ const Chat = ({ setIsDetails, isDetails }) => {
             </div>
             <div className="mt-auto flex gap-2 items-end p-3 relative">
 
-                <div className='flex gap-2 mb-1'>
-                    <span className='w-7 h-7 cursor-pointer rounded-full flex items-center justify-center'>
-                        <FaImage />
-                    </span>
-                    <span className='w-7 h-7 cursor-pointer rounded-full flex items-center justify-center'>
-                        <FaCamera />
-                    </span>
-                    <div className='emoji w-7 h-7 cursor-pointer rounded-full flex items-center justify-center relative'>
-                        <span onClick={() => setIsEmoji(prev => !prev)}>
-                            <MdOutlineEmojiEmotions size={18} />
-                        </span>
-                        <div className='picker'>
-                            <EmojiPicker open={isEmoji} onEmojiClick={handleEmoji} />
-                        </div>
-                    </div>
-                </div>
-                {/* <textarea name="" id="" className='flex-1 bg-gray-200 rounded-3xl py-2 px-3'></textarea> */}
-                {/* <input type="text" className='flex-1 bg-gray-200 rounded-3xl py-2 px-3' placeholder='Message' /> */}
-                <div className='flex-1'>
-                    <Editor value={value} setValue={setValue} placeholder="Message" />
-                </div>
-                <PrimaryButton onClick={handleGetValue} type='button'>
-                    Send
-                </PrimaryButton>
+                <MessageEditor />
 
             </div>
 

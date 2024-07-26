@@ -1,9 +1,13 @@
+'use client';
 import React from 'react'
 import { IoCloseOutline } from 'react-icons/io5'
 import PrimaryButton from '../buttons/PrimaryButton'
+import { useSelector } from 'react-redux';
+import Link from 'next/link';
 
 
 const ChatDetails = ({ setIsDetails, isDetails }) => {
+    const { convercation } = useSelector(state => state.chat);
     return (
         <div className={`details  ${isDetails ? 'detailsActive' : 'hidden  res9:block'} `}>
             <div className='h-[60px] border-b border-gray-200 flex items-center justify-between px-4 bg-gray-50'>
@@ -24,12 +28,16 @@ const ChatDetails = ({ setIsDetails, isDetails }) => {
             <div className='pt-4 flex gap-4 flex-col'>
                 <div className='flex flex-col gap-1'>
                     <img src="/image/avater/profile1.png" className='w-[100px] h-[100px] rounded-full mx-auto' alt="avater" />
-                    <p className='text-xl font-semibold text-center text-gray-800 leading-[20px]'>Mohin Rana</p>
+                    <p className='text-xl font-semibold text-center text-gray-800 leading-[20px]'>{convercation?.name?.fullName}</p>
                     <p className='text-xs font-normal text-center text-gray-500'>Content creator</p>
                     <div className='text-center mt-1'>
-                        <PrimaryButton>
-                            View Profile
-                        </PrimaryButton>
+                        <Link href={`/${convercation?.profileUrl || '/'}`}>
+                            <PrimaryButton
+                                type='link'
+                            >
+                                View Profile
+                            </PrimaryButton>
+                        </Link>
                     </div>
                 </div>
 
