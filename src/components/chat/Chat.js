@@ -1,18 +1,22 @@
 'use client';
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { FiPhoneCall } from 'react-icons/fi'
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux';
 import MessageEditor from './MessageEditor';
 import { fetchAllMessageByConversation } from '@/redux/chat/chatSlice';
 import MessageItems from './message/MessageItems';
+import { useSearchParams } from 'next/navigation';
 
 
 
 const Chat = ({ setIsDetails, isDetails }) => {
     const { convercation, messages } = useSelector(state => state.chat);
+    const searchParams = useSearchParams()
+
     const { user } = useSelector(state => state.auth);
     const dispatch = useDispatch();
+    const endMessageRef = useRef();
 
     useEffect(() => {
         if (convercation?._id) {
@@ -20,6 +24,16 @@ const Chat = ({ setIsDetails, isDetails }) => {
         }
 
     }, [convercation])
+
+    useEffect(() => {
+        if (endMessageRef.current) {
+            endMessageRef.current.scrollIntoView({ behavior: 'smooth' })
+        }
+    }, [messages])
+
+
+
+
 
     return (
         <div className={`chat  h-full  flex-col border-l border-r border-gray-200 ${isDetails ? 'hidden' : 'hidden res8:flex'} `} >
@@ -45,8 +59,8 @@ const Chat = ({ setIsDetails, isDetails }) => {
                     </div>
                 </div>
             </div>
-            <div className="center overflow-y-scroll bg-black bg-opacity-50 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('/image/theme/theme.png')`, }}>
-                <div className='h-full '>
+            <div className="center overflow-y-scroll bottom-0 bg-black bg-opacity-50 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('/image/theme/theme.png')`, }}>
+                <div className='h-full sticky bottom-0'>
                     <div className='px-4 flex flex-col gap-4 py-5 '>
 
                         {
@@ -54,10 +68,7 @@ const Chat = ({ setIsDetails, isDetails }) => {
                         }
 
 
-
-
-
-
+                        <div ref={endMessageRef}></div>
                     </div>
                 </div>
             </div>

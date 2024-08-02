@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 const MessageItems = ({ message }) => {
     const { user } = useSelector(state => state.auth);
-    console.log(message);
+
     return (
         <>
             {

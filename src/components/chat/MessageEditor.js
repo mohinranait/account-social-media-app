@@ -1,6 +1,6 @@
 'use client';
 import EmojiPicker from 'emoji-picker-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaCamera, FaImage } from 'react-icons/fa'
 import { MdOutlineEmojiEmotions } from 'react-icons/md'
 import PrimaryButton from '../buttons/PrimaryButton'
@@ -8,6 +8,9 @@ import dynamic from 'next/dynamic';
 import useAxios from '@/hooks/useAxios';
 import { useDispatch, useSelector } from 'react-redux';
 import { addMessage } from '@/redux/chat/chatSlice';
+import { io } from 'socket.io-client';
+import { socketUrl } from '@/envAccess';
+
 
 // import MdxEditorComponent from '';
 const Editor = dynamic(() => import('../editor/MdxEditorComponent'), {
@@ -16,29 +19,56 @@ const Editor = dynamic(() => import('../editor/MdxEditorComponent'), {
 })
 
 // ../editor/MdxEditorComponent
-
 const MessageEditor = () => {
+
+    const { user } = useSelector(state => state.auth)
     const { convercation } = useSelector(state => state.chat);
     const dispatch = useDispatch();
     const axios = useAxios();
     const [isEmoji, setIsEmoji] = useState(false)
     const [value, setValue] = useState('')
+    const [socket, setSocket] = useState(null);
 
     // handle emoji 
     const handleEmoji = (e) => {
         setIsEmoji(false)
     }
 
+    useEffect(() => {
+        const socketInstance = io(socketUrl);
+
+        socketInstance.on('connect', () => {
+            if (user?._id) {
+                socketInstance.emit('addNewUser', { userId: user?._id });
+            }
+        });
+
+        socketInstance.on('messageReceive', (message) => {
+            dispatch(addMessage(message));
+        });
+
+        setSocket(socketInstance);
+
+        return () => {
+            socketInstance.disconnect();
+        };
+    }, [user, dispatch]);
+
+
+
+
     // get value
     const handleGetValue = async () => {
 
         try {
             const res = await axios.post(`/chat/send/${convercation?._id}`, { message: value })
-            console.log(res?.data?.message);
             if (res?.data?.success) {
 
                 dispatch(addMessage(res?.data?.message))
                 setValue('')
+                if (socket) {
+                    socket.emit('addMessage', { reciverId: res?.data?.message?.reciverId, message: res?.data?.message });
+                }
             }
         } catch (error) {
 

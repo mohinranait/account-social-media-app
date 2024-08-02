@@ -44,28 +44,6 @@ const ChatList = () => {
                 {
                     conversations?.map(conver => <ConversationItem key={conver?._id} convercation={conver} conversations={conversations} />)
                 }
-
-
-                <li className='py-3 hover:bg-gray-100 px-4'>
-                    <a href="#" className='flex justify-between gap-1'>
-                        <div className='flex gap-2'>
-                            <img src="/image/avater/profile1.png" className='w-10 h-10 rounded-full ' alt="avater" />
-                            <div>
-                                <p className='text-base font-medium text-gray-800'>Mohin Rana</p>
-                                <p className='text-gray-500 text-xs'>Agamai kalk brisho</p>
-                            </div>
-                        </div>
-                        <div>
-                            <p className='text-xs font-normal text-right text-gray-500'>4h ago</p>
-                            <p className=' text-right'>
-                                <span className=' text-[10px] px-1 py-[2px] inline-block rounded-full bg-primary text-white leading-3'>
-                                    5
-                                </span>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-
             </ul>
 
 

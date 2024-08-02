@@ -26,6 +26,7 @@ const chatSlice = createSlice({
             state.convercation = action.payload
         },
         addMessage: (state, { payload }) => {
+            console.log('reux', payload);
             state.messages = [...state.messages, payload]
         },
         getMessages: (state, action) => {
