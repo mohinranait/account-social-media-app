@@ -12,14 +12,20 @@ const LayoutComponent = ({ children }) => {
     const router = useRouter();
 
     if (isLoading) {
+        console.log('loading isLoading');
+
         return <PageLoader />
     }
 
     if (!isAuthenticated) {
+        console.log('isLogin page');
+
         return <LoginPage />
     }
 
     if (isAuthenticated) {
+        console.log('login success');
+
         return <>
             <MainHeader />
             <main className=''>

@@ -7,10 +7,11 @@ import MessageEditor from './MessageEditor';
 import { fetchAllMessageByConversation } from '@/redux/chat/chatSlice';
 import MessageItems from './message/MessageItems';
 import { useSearchParams } from 'next/navigation';
+import { IoArrowBack } from "react-icons/io5";
 
 
 
-const Chat = ({ setIsDetails, isDetails }) => {
+const Chat = ({ setIsDetails, isDetails, openChat }) => {
     const { convercation, messages } = useSelector(state => state.chat);
     const searchParams = useSearchParams()
 
@@ -36,10 +37,13 @@ const Chat = ({ setIsDetails, isDetails }) => {
 
 
     return (
-        <div className={`chat  h-full  flex-col border-l border-r border-gray-200 ${isDetails ? 'hidden' : 'hidden res8:flex'} `} >
+        <div className={`chat  h-full  flex-col border-l border-r border-gray-200 ${isDetails ? 'hidden' : ' res8:flex'} `} >
             <div className='top'>
                 <div className='h-[60px] border-b border-gray-200 flex items-center justify-between px-4 bg-white'>
-                    <div className='flex gap-2'>
+                    <div className='flex gap-2 items-center'>
+                        <span className='text-gray text-gray-600'>
+                            <IoArrowBack className='' size={20} />
+                        </span>
                         <span className='w-9 h-9 inline-block relative rounded-full '>
                             <span className='w-[6px] h-[6px] rounded-full absolute bg-green-500 right-0 top-[8px]'></span>
                             <img src="/image/avater/profile1.png" className='w-9 h-9 rounded-full' alt="avater" />

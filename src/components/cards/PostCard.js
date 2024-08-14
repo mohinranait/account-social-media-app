@@ -13,7 +13,7 @@ import ReactionComponent from '@/ui/common/ReactionComponent';
 import PostReactionComponent from './PostReactionComponent';
 
 const PostCard = ({ post }) => {
-    const { _id, text, status, owner } = post || {}
+    const { _id, text, status, owner, withFriends } = post || {}
 
     return (
         <div className=' rounded  bg-white'>
@@ -21,9 +21,12 @@ const PostCard = ({ post }) => {
                 <div className='flex justify-between gap-3'>
                     <Image src={'/image/avater/profile1.png'} width={50} height={50} alt='avater' />
                     <div>
-                        <Link href={`${owner?.profileUrl}`} className='text-sm'>
-                            {owner?.name?.fullName}
-                        </Link>
+                        <>
+                            <Link href={`${owner?.profileUrl}`} className='text-sm'>
+                                {owner?.name?.fullName}
+                            </Link>
+                            {withFriends?.length > 0 && <> with {withFriends?.map(item => <span className='text-gray-700 text-sm underline mr-1 cursor-pointer'>{item?.name?.fullName}</span>)} </>}
+                        </>
                         <div className='flex gap-1 '>
                             <CiTimer size={12} />
                             <span className='text-xs font-normal text-gray-500'>11 Jun, 2024</span>

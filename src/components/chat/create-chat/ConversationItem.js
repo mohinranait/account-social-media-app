@@ -33,6 +33,7 @@ const ConversationItem = ({ convercation, conversations }) => {
     const handleOpenConvercation = (convId) => {
         dispatch(addConvercation(conversationInfo(convercation)))
         router.push(`/message?con=${convId}`)
+
     }
 
 

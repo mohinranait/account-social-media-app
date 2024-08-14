@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ConversationItem from './create-chat/ConversationItem';
 import { fetchAllConversation } from '@/redux/chat/convercationSlice';
 
-const ChatList = () => {
+const ChatList = ({ openChat }) => {
     const { user } = useSelector(state => state.auth)
     const { conversations } = useSelector(state => state.convercation)
 
@@ -18,7 +18,7 @@ const ChatList = () => {
         dispatch(fetchAllConversation({ user }))
     }, [])
     return (
-        <div className='lists bg-white h-full flex flex-col'>
+        <div className={`lists bg-white h-full  flex-col ${openChat ? 'hidden' : 'flex'} `}>
             <div className='h-[60px] border-b border-gray-200 flex justify-between px-4 items-center bg-gray-50'>
                 <div>
                     <span className='w-9 h-9 inline-block relative rounded-full '>

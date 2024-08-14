@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 import useAxios from '@/hooks/useAxios';
 
 const PostEditorComponent = ({ setIsOpen }) => {
-    const { post, setPost } = useCreatePost();
+    const { post, setPost, withFriends, setWithFriends } = useCreatePost({});
     const { user } = useSelector(state => state.auth);
 
     const axios = useAxios();
@@ -22,6 +22,9 @@ const PostEditorComponent = ({ setIsOpen }) => {
     const [isFile, setIsFile] = useState(false)
     const [isTagModal, setIsTagModal] = useState(false)
     const [isAudienceModal, setIsAudienceModal] = useState(false)
+
+    console.log(post);
+    console.log(withFriends);
 
 
 
@@ -31,6 +34,7 @@ const PostEditorComponent = ({ setIsOpen }) => {
         let postObject = {
             ...post,
             owner: user?._id,
+            withFriends,
         }
 
 
@@ -39,6 +43,7 @@ const PostEditorComponent = ({ setIsOpen }) => {
             if (res?.data.success) {
                 setIsOpen(false)
                 setPost({})
+                setWithFriends([])
             }
         } catch (error) {
 
@@ -63,7 +68,7 @@ const PostEditorComponent = ({ setIsOpen }) => {
                         <div className='flex gap-2'>
                             <img src="/image/avater/profile1.png" className='w-10 h-10 rounded-full' alt="avater" />
                             <div>
-                                <p className='text-base text-gray-800 font-medium'>Mohin Rana</p>
+                                <p className='text-base text-gray-800 font-medium'>{user?.name?.fullName} {withFriends?.length > 0 && <> with {withFriends?.map(item => <span className='text-blue-600 underline mr-1 cursor-pointer'>{item?.name?.fullName}</span>)} </>} </p>
                                 <div className='flex'>
                                     <div onClick={() => {
                                         setIsSecondModal(true);
