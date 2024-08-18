@@ -13,7 +13,7 @@ const GustRoute = ({ children }) => {
         if (isAuthenticated) {
             router.push("/");
         }
-    }, [isAuthenticated]);
+    }, [isAuthenticated, router]);
 
     if (isLoading) {
         return <PageLoader />;

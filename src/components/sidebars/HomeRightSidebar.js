@@ -1,15 +1,16 @@
 'use client';
-import useAxios from '@/hooks/useAxios'
+// import useAxios from '@/hooks/useAxios'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { IoIosSearch } from 'react-icons/io'
 import FrontendChatList from '../chat/create-chat/FrontendChatList';
+import { instance } from '@/hooks/useAxios';
 
 const HomeRightSidebar = () => {
   const [myFriends, setMyFriends] = useState([])
-  const axios = useAxios();
+  const axios = instance;
   useEffect(() => {
     (async function () {
       try {
@@ -21,7 +22,7 @@ const HomeRightSidebar = () => {
         console.log(error);
       }
     })()
-  }, [])
+  }, [axios])
   return (
     <div className='top-[75px] sticky'>
       <div className=' rounded'>

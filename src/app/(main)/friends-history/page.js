@@ -1,4 +1,5 @@
 import PrimaryButton from '@/components/buttons/PrimaryButton'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -15,7 +16,7 @@ const FriendsHistory = () => {
                         <li className='hover:bg-gray-100 rounded p-2 flex gap-3 cursor-pointer'>
                             <div>
                                 <span className='w-10 h-10 inline-block rounded-full'>
-                                    <img src="/image/avater/profile1.png" className='w-full h-full object-cover' alt="avater" />
+                                    <Image width={40} height={40} src="/image/avater/profile1.png" className='w-full h-full object-cover' alt="avater" />
                                 </span>
                             </div>
                             <div>
@@ -25,7 +26,7 @@ const FriendsHistory = () => {
                         <li className='hover:bg-gray-100 rounded p-2 flex gap-3 cursor-pointer'>
                             <div>
                                 <span className='w-10 h-10 inline-block rounded-full'>
-                                    <img src="/image/avater/profile1.png" className='w-full h-full object-cover' alt="avater" />
+                                    <Image width={40} height={40} src="/image/avater/profile1.png" className='w-full h-full object-cover' alt="avater" />
                                 </span>
                             </div>
                             <div>
@@ -35,7 +36,7 @@ const FriendsHistory = () => {
                         <li className='hover:bg-gray-100 rounded p-2 flex gap-3 cursor-pointer'>
                             <div>
                                 <span className='w-10 h-10 inline-block rounded-full'>
-                                    <img src="/image/avater/profile1.png" className='w-full h-full object-cover' alt="avater" />
+                                    <Image width={40} height={40} src="/image/avater/profile1.png" className='w-full h-full object-cover' alt="avater" />
                                 </span>
                             </div>
                             <div>
@@ -54,16 +55,16 @@ const FriendsHistory = () => {
                             <div className='flex gap-2'>
                                 <div>
                                     <span className='w-10 h-10 inline-block rounded-full'>
-                                        <img src="/image/avater/profile1.png" className='w-full h-full object-cover' alt="avater" />
+                                        <Image width={40} height={40} src="/image/avater/profile1.png" className='w-full h-full object-cover' alt="avater" />
                                     </span>
                                 </div>
                                 <div>
                                     <Link href="/" className='text-gray-800 text-base hover:underline'>Mohin Rana</Link>
                                     <div className='flex'>
-                                        <img className='w-4 h-4 rounded-full object-cover ' src="/image/avater/profile1.png" alt="image" />
-                                        <img className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
-                                        <img className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
-                                        <img className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={16} height={16} className='w-4 h-4 rounded-full object-cover ' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={16} height={16} className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={16} height={16} className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={16} height={16} className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
                                     </div>
                                 </div>
                             </div>
@@ -88,16 +89,16 @@ const FriendsHistory = () => {
                             <div className='flex gap-2'>
                                 <div>
                                     <span className='w-10 h-10 inline-block rounded-full'>
-                                        <img src="/image/avater/profile1.png" className='w-full h-full object-cover' alt="avater" />
+                                        <Image width={40} height={40} src="/image/avater/profile1.png" className='w-full h-full object-cover' alt="avater" />
                                     </span>
                                 </div>
                                 <div>
                                     <Link href="/" className='text-gray-800 text-base hover:underline'>Sofiya</Link>
                                     <div className='flex'>
-                                        <img className='w-4 h-4 rounded-full object-cover ' src="/image/avater/profile1.png" alt="image" />
-                                        <img className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
-                                        <img className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
-                                        <img className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={16} height={16} className='w-4 h-4 rounded-full object-cover ' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={16} height={16} className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={16} height={16} className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={16} height={16} className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
                                     </div>
                                 </div>
                             </div>
@@ -130,16 +131,16 @@ const FriendsHistory = () => {
                             <div className='flex gap-2'>
                                 <div>
                                     <span className='w-10 h-10 inline-block rounded-full'>
-                                        <img src="/image/avater/profile1.png" className='w-full h-full object-cover' alt="avater" />
+                                        <Image width={40} height={40} src="/image/avater/profile1.png" className='w-full h-full object-cover' alt="avater" />
                                     </span>
                                 </div>
                                 <div>
                                     <Link href="/" className='text-gray-800 text-base hover:underline'>Sofia Rahman</Link>
                                     <div className='flex'>
-                                        <img className='w-4 h-4 rounded-full object-cover ' src="/image/avater/profile1.png" alt="image" />
-                                        <img className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
-                                        <img className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
-                                        <img className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={40} height={40} className='w-4 h-4 rounded-full object-cover ' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={40} height={40} className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={40} height={40} className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={40} height={40} className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
                                         <span className='text-sm text-gray-500 inline-flex ml-1'> 3 Mutuals</span>
                                     </div>
                                 </div>
@@ -158,16 +159,16 @@ const FriendsHistory = () => {
                             <div className='flex gap-2'>
                                 <div>
                                     <span className='w-10 h-10 inline-block rounded-full'>
-                                        <img src="/image/avater/profile1.png" className='w-full h-full object-cover' alt="avater" />
+                                        <Image width={40} height={40} src="/image/avater/profile1.png" className='w-full h-full object-cover' alt="avater" />
                                     </span>
                                 </div>
                                 <div>
                                     <Link href="/" className='text-gray-800 text-base hover:underline'>Kadar </Link>
                                     <div className='flex'>
-                                        <img className='w-4 h-4 rounded-full object-cover ' src="/image/avater/profile1.png" alt="image" />
-                                        <img className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
-                                        <img className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
-                                        <img className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={16} height={16} className='w-4 h-4 rounded-full object-cover ' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={16} height={16} className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={16} height={16} className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
+                                        <Image width={16} height={16} className='w-4 h-4 rounded-full object-cover -ml-1 ring-1 ring-white' src="/image/avater/profile1.png" alt="image" />
                                         <span className='text-sm text-gray-500 inline-flex ml-1'> 5 Mutuals</span>
                                     </div>
                                 </div>

@@ -33,7 +33,7 @@ const ProfileProvider = ({ children }) => {
                 toast.error("Somthing wrong");
             }
         })();
-    }, [params]);
+    }, [params, axios]);
 
 
     const obj = {

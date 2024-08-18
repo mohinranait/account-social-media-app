@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { IoCloseOutline } from "react-icons/io5";
 import { FaUserPlus } from "react-icons/fa6";
+import Image from 'next/image';
 
 const AddFriendCard = () => {
     return (
@@ -13,7 +14,7 @@ const AddFriendCard = () => {
 
             <div className='-mt-4 px-1 relative'>
                 <div className='flex gap-1  items-end'>
-                    <img src="/image/avater/profile1.png" height={45} width={45} className='' alt="avater" />
+                    <Image src="/image/avater/profile1.png" height={45} width={45} className='' alt="avater" />
                     <div>
                         <Link href={'/'} className='text-gray-800 text-sm'>Mohin Rana</Link>
 
@@ -24,13 +25,13 @@ const AddFriendCard = () => {
                     <div className='flex gap-1 items-center'>
                         <div className='flex'>
                             <span className='w-4 h-4 rounded-full bg-gray-500'>
-                                <img src="/image/avater/profile1.png" height={40} width={40} className='w-4 h-4' alt="avater" />
+                                <Image src="/image/avater/profile1.png" height={40} width={40} className='w-4 h-4' alt="avater" />
                             </span>
                             <span className='w-4 h-4 rounded-full bg-gray-500 -ml-[6px]'>
-                                <img src="/image/avater/profile1.png" height={40} width={40} className='w-4 h-4' alt="avater" />
+                                <Image src="/image/avater/profile1.png" height={40} width={40} className='w-4 h-4' alt="avater" />
                             </span>
                             <span className='w-4 h-4 rounded-full bg-gray-500 -ml-[6px]'>
-                                <img src="/image/avater/profile1.png" height={40} width={40} className='w-4 h-4' alt="avater" />
+                                <Image src="/image/avater/profile1.png" height={40} width={40} className='w-4 h-4' alt="avater" />
                             </span>
                         </div>
                         <div className='text-gray-500 text-sm'>

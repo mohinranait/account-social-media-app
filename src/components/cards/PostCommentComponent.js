@@ -45,14 +45,14 @@ const PostCommentComponent = ({ children, post }) => {
                             <p className='text-gray-700 text-sm'>{post?.text}</p>
                         </div>
                         <div>
-                            <img src="/image/background/auth-bg.webp" alt="img" />
+                            <Image width={1000} height={1000} src="/image/background/auth-bg.webp" alt="img" />
                         </div>
 
                         <ul className='flex flex-col gap-5 mt-3'>
                             <li className='flex gap-4 relative before:w-[1px] before:h-[calc(100%-63px)] before:bg-gray-800 before:absolute before:top-0 before:left-[24px]'>
                                 <div>
                                     <div className='w-12 h-12 rounded-full relative z-10'>
-                                        <img className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
+                                        <Image width={36} height={36} className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
                                     </div>
                                 </div>
                                 <ul className='flex flex-col gap-3'>
@@ -71,7 +71,7 @@ const PostCommentComponent = ({ children, post }) => {
                                     <li className=' flex gap-2 before:w-[37px] before:h-[10px]  before:border-b before:border-l before:border-gray-800 before:rounded-[0_0_0_30px] relative before:absolute before:-left-[40px] before:top-0'>
                                         <div>
                                             <div className='w-5 h-5 rounded-full'>
-                                                <img className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
+                                                <Image width={20} height={20} className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
                                             </div>
                                         </div>
                                         <div className='w-full'>
@@ -85,7 +85,7 @@ const PostCommentComponent = ({ children, post }) => {
                                     <li className=' flex gap-2 before:w-[37px] before:h-[10px]  before:border-b before:border-l before:border-gray-800 before:rounded-[0_0_0_30px] relative before:absolute before:-left-[40px] before:top-0'>
                                         <div>
                                             <div className='w-5 h-5 rounded-full'>
-                                                <img className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
+                                                <Image width={20} height={20} className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
                                             </div>
                                         </div>
                                         <div className='w-full'>
@@ -99,7 +99,7 @@ const PostCommentComponent = ({ children, post }) => {
                                     <li className=' flex gap-2 before:w-[37px] before:h-[10px]  before:border-b before:border-l before:border-gray-800 before:rounded-[0_0_0_30px] relative before:absolute before:-left-[40px] before:top-0'>
                                         <div>
                                             <div className='w-5 h-5 rounded-full'>
-                                                <img className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
+                                                <Image width={20} height={20} className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
                                             </div>
                                         </div>
                                         <div className='w-full'>
@@ -113,7 +113,7 @@ const PostCommentComponent = ({ children, post }) => {
                                     <li className=' flex gap-2 before:w-[37px] before:h-[10px]  before:border-b before:border-l before:border-gray-800 before:rounded-[0_0_0_30px] relative before:absolute before:-left-[40px] before:top-0'>
                                         <div>
                                             <div className='w-5 h-5 rounded-full'>
-                                                <img className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
+                                                <Image width={20} height={20} className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
                                             </div>
                                         </div>
                                         <div className='w-full'>
@@ -130,7 +130,7 @@ const PostCommentComponent = ({ children, post }) => {
                             <li className='flex gap-4 relative before:w-[1px] before:h-[calc(100%-63px)] before:bg-gray-800 before:absolute before:top-0 before:left-[24px]'>
                                 <div>
                                     <div className='w-12 h-12 rounded-full relative z-10'>
-                                        <img className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
+                                        <Image width={36} height={36} className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
                                     </div>
                                 </div>
                                 <ul className='flex flex-col gap-3'>
@@ -146,7 +146,7 @@ const PostCommentComponent = ({ children, post }) => {
                                     <li className=' flex gap-2 before:w-[37px] before:h-[10px]  before:border-b before:border-l before:border-gray-800 before:rounded-[0_0_0_30px] relative before:absolute before:-left-[40px] before:top-0'>
                                         <div>
                                             <div className='w-5 h-5 rounded-full'>
-                                                <img className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
+                                                <Image width={20} height={20} className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
                                             </div>
                                         </div>
                                         <div className='w-full'>
@@ -160,7 +160,7 @@ const PostCommentComponent = ({ children, post }) => {
                                     <li className=' flex gap-2 before:w-[37px] before:h-[10px]  before:border-b before:border-l before:border-gray-800 before:rounded-[0_0_0_30px] relative before:absolute before:-left-[40px] before:top-0'>
                                         <div>
                                             <div className='w-5 h-5 rounded-full'>
-                                                <img className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
+                                                <Image width={20} height={20} className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
                                             </div>
                                         </div>
                                         <div className='w-full'>
@@ -177,7 +177,7 @@ const PostCommentComponent = ({ children, post }) => {
                             <li className='flex gap-4 relative before:w-[1px] before:h-[calc(100%-63px)] before:bg-gray-800 before:absolute before:top-0 before:left-[24px]'>
                                 <div>
                                     <div className='w-12 h-12 rounded-full relative z-10'>
-                                        <img className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
+                                        <Image width={36} height={36} className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
                                     </div>
                                 </div>
                                 <ul className='flex flex-col gap-3'>
@@ -193,7 +193,7 @@ const PostCommentComponent = ({ children, post }) => {
                                     <li className=' flex gap-2 before:w-[37px] before:h-[10px]  before:border-b before:border-l before:border-gray-800 before:rounded-[0_0_0_30px] relative before:absolute before:-left-[40px] before:top-0'>
                                         <div>
                                             <div className='w-5 h-5 rounded-full'>
-                                                <img className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
+                                                <Image width={20} height={20} className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
                                             </div>
                                         </div>
                                         <div className='w-full'>
@@ -207,7 +207,7 @@ const PostCommentComponent = ({ children, post }) => {
                                     <li className=' flex gap-2 before:w-[37px] before:h-[10px]  before:border-b before:border-l before:border-gray-800 before:rounded-[0_0_0_30px] relative before:absolute before:-left-[40px] before:top-0'>
                                         <div>
                                             <div className='w-5 h-5 rounded-full'>
-                                                <img className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
+                                                <Image width={20} height={20} className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
                                             </div>
                                         </div>
                                         <div className='w-full'>
@@ -228,7 +228,7 @@ const PostCommentComponent = ({ children, post }) => {
                     <div className='px-3 py-2 flex gap-4 items-start'>
                         <div>
                             <div className='w-12 h-12 rounded-full'>
-                                <img className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
+                                <Image width={36} height={36} className='w-full h-full object-cover' src="/image/avater/profile1.png" alt="avater" />
                             </div>
                         </div>
                         <div className='w-full'>

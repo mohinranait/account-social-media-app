@@ -4,6 +4,7 @@ import { IoCloseOutline } from 'react-icons/io5'
 import PrimaryButton from '../buttons/PrimaryButton'
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 const ChatDetails = ({ setIsDetails, isDetails }) => {
@@ -27,7 +28,7 @@ const ChatDetails = ({ setIsDetails, isDetails }) => {
             </div>
             <div className='pt-4 flex gap-4 flex-col'>
                 <div className='flex flex-col gap-1'>
-                    <img src="/image/avater/profile1.png" className='w-[100px] h-[100px] rounded-full mx-auto' alt="avater" />
+                    <Image width={100} height={100} src="/image/avater/profile1.png" className='w-[100px] h-[100px] rounded-full mx-auto' alt="avater" />
                     <p className='text-xl font-semibold text-center text-gray-800 leading-[20px]'>{convercation?.name?.fullName}</p>
                     <p className='text-xs font-normal text-center text-gray-500'>Content creator</p>
                     <div className='text-center mt-1'>

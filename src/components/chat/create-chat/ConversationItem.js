@@ -1,6 +1,7 @@
 'use client';
 import useAxios from '@/hooks/useAxios';
 import { addConvercation } from '@/redux/chat/chatSlice';
+import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
@@ -41,7 +42,7 @@ const ConversationItem = ({ convercation, conversations }) => {
     useEffect(() => {
         let convercation = conversations?.find(x => x?._id == conversationId)
         dispatch(addConvercation(conversationInfo(convercation)))
-    }, [conversationId])
+    }, [conversationId, dispatch, conversations, conversationInfo])
 
 
 
@@ -51,7 +52,7 @@ const ConversationItem = ({ convercation, conversations }) => {
                 <div className='flex gap-2'>
                     <span className='w-10 h-10 rounded-full relative'>
                         <span className='h-2 w-2 rounded-full bg-green-500 top-2 ring-2 ring-white -right-[2px] absolute'></span>
-                        <img src="/image/avater/profile1.png" className='w-10 h-10 rounded-full ' alt="avater" />
+                        <Image width={40} height={40} src="/image/avater/profile1.png" className='w-10 h-10 rounded-full ' alt="avater" />
                     </span>
                     <div>
                         <p className='text-base font-medium text-gray-800'>{conversationInfo(convercation).name?.firstName}</p>

@@ -4,7 +4,7 @@ import React from 'react'
 
 const MainLayout = ({ children }) => {
   return (
-    <LayoutComponent children={children} />
+    <LayoutComponent>{children}</LayoutComponent>
   )
 }
 

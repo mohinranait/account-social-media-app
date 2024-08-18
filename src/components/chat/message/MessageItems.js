@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
@@ -18,7 +19,7 @@ const MessageItems = ({ message }) => {
                         </div>
                         <span>
                             <div className='w-5 h-5 rounded-full'>
-                                <img src="/image/avater/profile1.png" className='w-5 h-5 rounded-full' alt="" />
+                                <Image width={20} height={20} src="/image/avater/profile1.png" className='w-5 h-5 rounded-full' alt="" />
                             </div>
                         </span>
                     </div>
@@ -27,7 +28,7 @@ const MessageItems = ({ message }) => {
                         <div className='w-[80%] flex gap-2'>
                             <span>
                                 <div className='w-5 h-5 rounded-full'>
-                                    <img src="/image/avater/profile1.png" className='w-5 h-5 rounded-full' alt="" />
+                                    <Image width={20} height={20} src="/image/avater/profile1.png" className='w-5 h-5 rounded-full' alt="" />
                                 </div>
                             </span>
                             <div className='bg-purple-500 text-sm text-white  backdrop-filter px-2 py-1 rounded-md'>

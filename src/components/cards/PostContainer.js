@@ -17,7 +17,7 @@ const PostContainer = () => {
                 console.log(error.message);
             }
         })()
-    }, [])
+    }, [axios])
     return (
         <>
             {

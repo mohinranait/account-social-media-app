@@ -4,12 +4,10 @@ import Link from 'next/link'
 import React from 'react'
 import { CiTimer } from "react-icons/ci";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import { AiOutlineLike } from "react-icons/ai";
 import { PiShareFatThin } from "react-icons/pi";
 import { GoComment } from "react-icons/go";
 import StatusIcon from '@/ui/StatusIcon';
 import PostCommentComponent from './PostCommentComponent';
-import ReactionComponent from '@/ui/common/ReactionComponent';
 import PostReactionComponent from './PostReactionComponent';
 
 const PostCard = ({ post }) => {
@@ -48,15 +46,15 @@ const PostCard = ({ post }) => {
                 <p className='text-gray-700 text-sm'>{text}</p>
             </div>
             <div>
-                <img src="/image/background/auth-bg.webp" alt="img" />
+                <Image width={1000} height={1000} src="/image/background/auth-bg.webp" alt="img" />
             </div>
 
             <div className='py-3 px-3'>
                 <ul className='flex gap-5 items-center justify-center'>
 
-                    <PostReactionComponent post={post} />
+                    <PostReactionComponent key={1} post={post} />
 
-                    <PostCommentComponent post={post}>
+                    <PostCommentComponent key={2} post={post}>
                         <button className='flex w-full justify-center py-[5px] px-4 hover:bg-gray-100 rounded-sm items-center gap-1'>
                             <GoComment className='text-gray-500' />
                             <span className='text-sm text-gray-500'>Comment</span>

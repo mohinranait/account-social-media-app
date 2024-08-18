@@ -37,9 +37,9 @@ const PostReactionComponent = ({ post }) => {
         if (post) {
             setReaction(post?.postReaction?.find(item => item?.userId == user?._id && item?.postId == post?._id)?.type)
         }
-    }, [post])
+    }, [post, user?._id])
 
-    console.log(reaction);
+
 
     return (
         <li className='w-full relative peer group  '>

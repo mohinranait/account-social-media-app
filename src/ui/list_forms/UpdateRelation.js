@@ -82,7 +82,7 @@ const UpdateRelation = () => {
                 }
             })()
         }
-    }, [isText])
+    }, [isText, axios])
 
 
     const handleCancelUpdate = () => {

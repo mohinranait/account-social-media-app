@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
                 dispatch(authLoading(false));
             }
         })();
-    }, []);
+    }, [axios, dispatch]);
     return <>{children}</>;
 };
 

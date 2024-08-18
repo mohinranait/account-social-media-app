@@ -8,6 +8,7 @@ import { fetchAllMessageByConversation } from '@/redux/chat/chatSlice';
 import MessageItems from './message/MessageItems';
 import { useSearchParams } from 'next/navigation';
 import { IoArrowBack } from "react-icons/io5";
+import Image from 'next/image';
 
 
 
@@ -24,7 +25,7 @@ const Chat = ({ setIsDetails, isDetails, openChat }) => {
             dispatch(fetchAllMessageByConversation({ reciver: convercation }))
         }
 
-    }, [convercation])
+    }, [convercation, dispatch])
 
     useEffect(() => {
         if (endMessageRef.current) {
@@ -46,7 +47,7 @@ const Chat = ({ setIsDetails, isDetails, openChat }) => {
                         </span>
                         <span className='w-9 h-9 inline-block relative rounded-full '>
                             <span className='w-[6px] h-[6px] rounded-full absolute bg-green-500 right-0 top-[8px]'></span>
-                            <img src="/image/avater/profile1.png" className='w-9 h-9 rounded-full' alt="avater" />
+                            <Image width={36} height={36} src="/image/avater/profile1.png" className='w-9 h-9 rounded-full' alt="avater" />
                         </span>
                         <div>
                             <p className='tex-base font-medium text-gray-700'>{convercation?.name?.fullName || ''}</p>

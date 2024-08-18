@@ -9,7 +9,9 @@ const UserProfileLayout = ({ children }) => {
 
     return (
         <ProfileProvider>
-            <ProfileLayout children={children} />
+            <ProfileLayout>
+                {children}
+            </ProfileLayout>
         </ProfileProvider>
     )
 }

@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import React, { useState } from 'react'
 
 const UploadImage = () => {
@@ -50,7 +51,7 @@ const UploadImage = () => {
             </form>
             <div>
                 {
-                    preview && <img src={preview} alt="avae" />
+                    preview && <Image width={100} height={100} src={preview} alt="avae" />
                 }
 
             </div>

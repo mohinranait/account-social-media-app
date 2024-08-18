@@ -12,6 +12,7 @@ import SearchTagUserByName from '@/ui/common/SearchTagUserByName';
 import useCreatePost from '@/hooks/useCreatePost';
 import { useSelector } from 'react-redux';
 import useAxios from '@/hooks/useAxios';
+import Image from 'next/image';
 
 const PostEditorComponent = ({ setIsOpen }) => {
     const { post, setPost, withFriends, setWithFriends } = useCreatePost({});
@@ -66,7 +67,7 @@ const PostEditorComponent = ({ setIsOpen }) => {
                     </div>
                     <div className=' flex flex-col gap-5 p-4'>
                         <div className='flex gap-2'>
-                            <img src="/image/avater/profile1.png" className='w-10 h-10 rounded-full' alt="avater" />
+                            <Image width={40} height={40} src="/image/avater/profile1.png" className='w-10 h-10 rounded-full' alt="avater" />
                             <div>
                                 <p className='text-base text-gray-800 font-medium'>{user?.name?.fullName} {withFriends?.length > 0 && <> with {withFriends?.map(item => <span className='text-blue-600 underline mr-1 cursor-pointer'>{item?.name?.fullName}</span>)} </>} </p>
                                 <div className='flex'>
