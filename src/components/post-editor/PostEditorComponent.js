@@ -24,8 +24,7 @@ const PostEditorComponent = ({ setIsOpen }) => {
     const [isTagModal, setIsTagModal] = useState(false)
     const [isAudienceModal, setIsAudienceModal] = useState(false)
 
-    console.log(post);
-    console.log(withFriends);
+
 
 
 
@@ -53,7 +52,7 @@ const PostEditorComponent = ({ setIsOpen }) => {
 
     return (
 
-        <div className='w-[500px] overflow-x-hidden '>
+        <div key={user?._id} className='w-[500px] overflow-x-hidden '>
             <div className={`w-[1000px] grid grid-cols-2 items-center transition duration-75   ${isSecondModal ? '-translate-x-[500px]' : 'translate-x-[0px]'} `}>
                 {/* First modal  */}
                 <div className='w-[500px] bg-white'>
@@ -69,7 +68,7 @@ const PostEditorComponent = ({ setIsOpen }) => {
                         <div className='flex gap-2'>
                             <Image width={40} height={40} src="/image/avater/profile1.png" className='w-10 h-10 rounded-full' alt="avater" />
                             <div>
-                                <p className='text-base text-gray-800 font-medium'>{user?.name?.fullName} {withFriends?.length > 0 && <> with {withFriends?.map(item => <span className='text-blue-600 underline mr-1 cursor-pointer'>{item?.name?.fullName}</span>)} </>} </p>
+                                <p className='text-base text-gray-800 font-medium'>{user?.name?.fullName} {withFriends?.length > 0 && <> with {withFriends?.map((item, idx) => <span key={idx} className='text-blue-600 underline mr-1 cursor-pointer'>{item?.name?.fullName}</span>)} </>} </p>
                                 <div className='flex'>
                                     <div onClick={() => {
                                         setIsSecondModal(true);

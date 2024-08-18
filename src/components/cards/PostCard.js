@@ -23,7 +23,7 @@ const PostCard = ({ post }) => {
                             <Link href={`${owner?.profileUrl}`} className='text-sm'>
                                 {owner?.name?.fullName}
                             </Link>
-                            {withFriends?.length > 0 && <> with {withFriends?.map(item => <span className='text-gray-700 text-sm underline mr-1 cursor-pointer'>{item?.name?.fullName}</span>)} </>}
+                            {withFriends?.length > 0 && <> with {withFriends?.map((item, idx) => <span key={idx} className='text-gray-700 text-sm underline mr-1 cursor-pointer'>{item?.name?.fullName}</span>)} </>}
                         </>
                         <div className='flex gap-1 '>
                             <CiTimer size={12} />
@@ -52,9 +52,9 @@ const PostCard = ({ post }) => {
             <div className='py-3 px-3'>
                 <ul className='flex gap-5 items-center justify-center'>
 
-                    <PostReactionComponent key={1} post={post} />
+                    <PostReactionComponent post={post} />
 
-                    <PostCommentComponent key={2} post={post}>
+                    <PostCommentComponent post={post}>
                         <button className='flex w-full justify-center py-[5px] px-4 hover:bg-gray-100 rounded-sm items-center gap-1'>
                             <GoComment className='text-gray-500' />
                             <span className='text-sm text-gray-500'>Comment</span>

@@ -12,7 +12,7 @@ import StatusIcon from '@/ui/StatusIcon';
 const PostCommentComponent = ({ children, post }) => {
     const [isOpenModal, setIsOpenModal] = useState(false)
     return (
-        <li onClick={() => setIsOpenModal(true)} className='w-full'>
+        <li key={'un'} onClick={() => setIsOpenModal(true)} className='w-full'>
             {children}
             <Modal isOpen={isOpenModal} setIsOpen={setIsOpenModal}>
                 <div className='bg-white rounded w-full res8:w-[600px]  shadow'>
