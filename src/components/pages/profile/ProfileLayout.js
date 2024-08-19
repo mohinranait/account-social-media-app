@@ -52,8 +52,8 @@ const ProfileLayout = ({ children }) => {
     return (
         <div className='mt-4'>
             <div className='  res10:w-[950px] bg-white rounded-md mx-auto'>
-                <div className='bg-gray-200 h-[300px] '>
-                    asdf
+                <div className='bg-gray-200 h-[300px] flex items-center justify-center bg-gradient-to-r from-primary to-blue-500 bg-opacity-10 '>
+                    <h1 className='text-3xl text-white font-semibold '>Profile-{user?.name?.fullName} </h1>
                 </div>
                 <div className='-mt-7 flex flex-col res7:flex-row justify-between res7:items-end px-10'>
                     <div className='flex flex-col items-center res5:flex-row res5:items-end gap-3'>

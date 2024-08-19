@@ -8,6 +8,8 @@ import { IoGameController } from "react-icons/io5";
 import { PiVideo } from 'react-icons/pi';
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
+import { FaUserFriends } from "react-icons/fa";
+
 
 const HomeLeftSidebar = () => {
     const { user } = useSelector(state => state.auth);
@@ -47,6 +49,14 @@ const HomeLeftSidebar = () => {
                                 <PiVideo size={18} />
                             </span>
                             <span>Videos</span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={'/friends'} className='w-full py-2 px-3 rounded flex items-center gap-3 hover:bg-gray-50 transition-all'>
+                            <span className='w-7 h-7 rounded-full flex items-center justify-center'>
+                                <FaUserFriends size={18} />
+                            </span>
+                            <span>Friends</span>
                         </Link>
                     </li>
                     <li>
