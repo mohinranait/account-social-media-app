@@ -1,9 +1,6 @@
 'use client';
 // import useAxios from '@/hooks/useAxios'
-import Image from 'next/image'
-import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { FaRegUserCircle } from 'react-icons/fa'
 import { IoIosSearch } from 'react-icons/io'
 import FrontendChatList from '../chat/create-chat/FrontendChatList';
 import { instance } from '@/hooks/useAxios';
@@ -14,7 +11,7 @@ const HomeRightSidebar = () => {
   useEffect(() => {
     (async function () {
       try {
-        const res = await axios.get(`/user/all`);
+        const res = await axios.get(`/user/all?actiontype=chatlists`);
         if (res.data?.success) {
           setMyFriends(res?.data?.payload?.users);
         }

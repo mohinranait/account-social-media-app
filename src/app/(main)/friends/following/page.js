@@ -1,23 +1,24 @@
 'use client';
-import AddFriendCard from '@/components/cards/AddFirend/AddFriendCard'
-import useAxios from '@/hooks/useAxios'
+import RequiestCard from '@/components/cards/suggests/RequiestCard'
 import React, { useEffect, useState } from 'react'
-import { FaArrowLeft } from 'react-icons/fa'
+import { FaArrowLeft } from "react-icons/fa6";
 import { IoIosSearch } from 'react-icons/io'
+import useAxios from '@/hooks/useAxios';
 
-const SuggestionFriends = () => {
-
+const FollowingLists = () => {
     const axios = useAxios();
-    const [friendsSuggestions, setFriendSuggestions] = useState([])
+    const [friendsFollowings, setFriendFollowings] = useState([])
 
 
 
     useEffect(() => {
 
         (async function () {
+
             try {
-                const res = await axios.get(`/user/all?querytype=suggestions`);
-                setFriendSuggestions(res?.data?.payload?.users);
+                const res = await axios.get(`/user/following`);
+
+                setFriendFollowings(res?.data?.payload?.followings);
 
             } catch (error) {
                 console.log(error);
@@ -25,6 +26,8 @@ const SuggestionFriends = () => {
             }
         })()
     }, [axios])
+
+    console.log("reciver", friendsFollowings);
 
     return (
         <div>
@@ -34,7 +37,7 @@ const SuggestionFriends = () => {
                         <FaArrowLeft size={18} />
                     </span>
                     <div className='flex flex-col '>
-                        <span className='text-lg text-gray-700 font-semibold '>Suggestions Friends </span>
+                        <span className='text-lg text-gray-700 font-semibold '>Friends Request</span>
                         <span className='text-sm text-gray-700'>500 Friend requist</span>
                     </div>
                 </div>
@@ -44,15 +47,12 @@ const SuggestionFriends = () => {
                 </div>
             </div>
             <div className='grid grid-cols-4 gap-4'>
-
                 {
-                    friendsSuggestions?.map(user => <AddFriendCard key={user?._id} user={user} />)
+                    friendsFollowings?.map(following => <RequiestCard key={following?._id} data={following} />)
                 }
-
-
             </div>
         </div>
     )
 }
 
-export default SuggestionFriends
+export default FollowingLists
