@@ -1,15 +1,23 @@
 'use client';
 import useAxios from '@/hooks/useAxios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import PostCard from './PostCard';
+import { ProfileContext } from '@/provider/ProfileProvider';
+import { isValidObjectId } from '@/utils/helpers';
 
-const PostContainer = () => {
+const PostContainer = ({ query }) => {
+
+
+
+
     const axios = useAxios();
     const [posts, setPosts] = useState([])
     useEffect(() => {
+        if (!isValidObjectId(query) && query !== 'all') return;
+
         (async function () {
             try {
-                const res = await axios.get(`/post/all`);
+                const res = await axios.get(`/post/all?query=${query}`);
                 if (res?.data?.success) {
                     setPosts(res?.data?.payload?.posts);
                 }
@@ -17,7 +25,9 @@ const PostContainer = () => {
                 console.log(error.message);
             }
         })()
-    }, [axios])
+    }, [axios, query])
+
+
     return (
         <>
             {

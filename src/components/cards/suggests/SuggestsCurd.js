@@ -27,6 +27,9 @@ const SuggestsCurd = () => {
         })()
     }, [axios])
 
+
+
+
     return (
         <div className='bg-white rounded'>
             <div className='flex justify-between pt-3 pb-2 px-3  '>

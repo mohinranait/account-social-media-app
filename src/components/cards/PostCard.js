@@ -11,7 +11,7 @@ import PostCommentComponent from './PostCommentComponent';
 import PostReactionComponent from './PostReactionComponent';
 
 const PostCard = ({ post }) => {
-    const { _id, text, status, owner, withFriends } = post || {}
+    const { _id, text, status, owner, withFriends, media } = post || {}
 
     return (
         <div className=' rounded  bg-white'>
@@ -45,9 +45,12 @@ const PostCard = ({ post }) => {
             <div className='px-4 pb-2 pt-1'>
                 <p className='text-gray-700 text-sm'>{text}</p>
             </div>
-            <div>
-                <Image width={1000} height={1000} src="/image/background/auth-bg.webp" alt="img" />
-            </div>
+            {
+                media?.fileUrl && <div>
+                    <Image width={1000} height={1000} src={media?.fileUrl} alt="img" />
+                </div>
+            }
+
 
             <div className='py-3 px-3'>
                 <ul className='flex gap-5 items-center justify-center'>

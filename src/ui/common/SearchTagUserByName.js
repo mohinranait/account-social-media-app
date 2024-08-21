@@ -46,7 +46,7 @@ const SearchTagUserByName = ({ setIsSecondModal, setIsTagModal }) => {
     const text = value;
     setSearchText(text)
     try {
-      const res = await axios.get(`/user/all`, {
+      const res = await axios.get(`/user/all?querytype=friends`, {
         params: {
           search: text,
         }

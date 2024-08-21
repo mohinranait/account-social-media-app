@@ -148,7 +148,7 @@ const ProfilePage = () => {
             </div>
             <div className=''>
                 <div className='flex flex-col gap-4'>
-                    <PostContainer />
+                    <PostContainer query={profile?._id} />
                 </div>
             </div>
         </div>

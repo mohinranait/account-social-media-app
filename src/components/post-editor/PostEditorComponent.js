@@ -23,7 +23,8 @@ const PostEditorComponent = ({ setIsOpen }) => {
     const [isFile, setIsFile] = useState(false)
     const [isTagModal, setIsTagModal] = useState(false)
     const [isAudienceModal, setIsAudienceModal] = useState(false)
-
+    const [images, setImages] = useState('')
+    const [uploadFile, setUploadFile] = useState(null)
 
 
 
@@ -31,10 +32,33 @@ const PostEditorComponent = ({ setIsOpen }) => {
 
     // handle Submit post
     const handleSubmitPost = async () => {
+
+        let uploadedImageId = '';
+        if (uploadFile != null) {
+            let formData = new FormData();
+            formData.append('file', uploadFile);
+
+            try {
+                const res = await axios.post(`/file/upload`, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+                uploadedImageId = res?.data?.payload?.file?._id;
+
+            } catch (error) {
+                console.log(error);
+
+            }
+        }
+
+
+
         let postObject = {
             ...post,
             owner: user?._id,
             withFriends,
+            media: uploadedImageId
         }
 
 
@@ -49,6 +73,24 @@ const PostEditorComponent = ({ setIsOpen }) => {
 
         }
     }
+
+
+    // handle upload image
+    const handleUploadImage = async (e) => {
+        const file = e.target.files[0];
+        setUploadFile(file)
+
+        if (file) {
+            const reader = new FileReader()
+            reader.onload = (e) => {
+                setImages(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+
+    }
+
+
 
     return (
 
@@ -86,22 +128,37 @@ const PostEditorComponent = ({ setIsOpen }) => {
                             <textarea value={post?.text} onChange={(e) => setPost(prev => ({ ...prev, text: e.target.value }))} name="" id="" placeholder='Write your mind' className='w-full mb-3 min-h-8  focus-visible:outline-none' >
 
                             </textarea>
+
+
                             {
                                 isFile && <div className='border p-2 rounded  '>
-                                    <div className='py-7 relative bg-gray-100 hover:bg-gray-200 cursor-pointer'>
-                                        <span onClick={() => setIsFile(false)} className='w-8 h-8  rounded-full bg-white hover:bg-gray-100 flex items-center justify-center absolute right-2 top-2'>
-                                            <IoCloseOutline />
-                                        </span>
-                                        <div className='flex items-center justify-center'>
-                                            <span className='w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center'>
-                                                <MdAddToPhotos size={22} />
+
+                                    <label htmlFor='uploadImages' >
+
+                                        <input type="file" name='file' onChange={handleUploadImage} id='uploadImages' hidden />
+                                        <div className='w-full h-full relative bg-gray-100 hover:bg-gray-200 cursor-pointer'>
+                                            <span onClick={() => setIsFile(false)} className='w-8 h-8  rounded-full bg-white hover:bg-gray-100 flex items-center justify-center absolute right-2 top-2'>
+                                                <IoCloseOutline />
                                             </span>
+                                            {
+                                                images ? <div className='max-h-[250px] overflow-y-auto'>
+                                                    <Image src={images} width={400} height={400} className='w-full h-auto' alt="avater" />
+                                                </div> : <div className='py-7 '>
+                                                    <div className='flex items-center justify-center'>
+                                                        <span className='w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center'>
+                                                            <MdAddToPhotos size={22} />
+                                                        </span>
+                                                    </div>
+                                                    <div className='text-gray-600 text-center text-lg font-medium'>
+                                                        Add Photos/Videos
+                                                    </div>
+                                                    <p className='text-xs text-center text-gray-400'>Or Drag & drop</p>
+                                                </div>
+                                            }
+
+
                                         </div>
-                                        <div className='text-gray-600 text-center text-lg font-medium'>
-                                            Add Photos/Videos
-                                        </div>
-                                        <p className='text-xs text-center text-gray-400'>Or Drag & drop</p>
-                                    </div>
+                                    </label>
                                 </div>
                             }
 

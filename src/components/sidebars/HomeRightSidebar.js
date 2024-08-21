@@ -11,7 +11,7 @@ const HomeRightSidebar = () => {
   useEffect(() => {
     (async function () {
       try {
-        const res = await axios.get(`/user/all?actiontype=chatlists`);
+        const res = await axios.get(`/user/all?querytype=friends`);
         if (res.data?.success) {
           setMyFriends(res?.data?.payload?.users);
         }

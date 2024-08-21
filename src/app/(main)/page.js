@@ -25,7 +25,7 @@ const HomePage = () => {
             <PostCreator />
             <div className=' bg-gray-100 md:mx-[50px] lg:mx-0 res12:px-[50px] flex flex-col gap-5 '>
               <SuggestsCurd />
-              <PostContainer />
+              <PostContainer query={'all'} />
             </div>
           </div>
           <div className='hidden res9:block col-span-1'>
