@@ -30,7 +30,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Mongoose
 - MongooDB
 
-
+## Features -> Inspire by Facebook
+- Login / Register
+- Create post with Dynamic Status, attachment, tag friends, 
+- Send Request, Request accept, Delete Request, Cancel Request 
+- Friend can see Post status Public and Friend 
+- Visitor can see  Post status Public only 
+- Owner can see all status posts 
 
 
 ## Links

@@ -9,9 +9,22 @@ import { GoComment } from "react-icons/go";
 import StatusIcon from '@/ui/StatusIcon';
 import PostCommentComponent from './PostCommentComponent';
 import PostReactionComponent from './PostReactionComponent';
+import moment from 'moment';
+
+const dateFormat = (date) => {
+    let now = moment();
+    let time = moment(date)
+
+    if (now.diff(time, 'hours') < 24) {
+        return time.fromNow()
+    } else {
+        return time.format("DD MMM, YYYY")
+
+    }
+}
 
 const PostCard = ({ post }) => {
-    const { _id, text, status, owner, withFriends, media } = post || {}
+    const { _id, text, status, owner, withFriends, media, createdAt } = post || {}
 
     return (
         <div className=' rounded  bg-white'>
@@ -27,7 +40,7 @@ const PostCard = ({ post }) => {
                         </>
                         <div className='flex gap-1 '>
                             <CiTimer size={12} />
-                            <span className='text-xs font-normal text-gray-500'>11 Jun, 2024</span>
+                            <span className='text-xs font-normal text-gray-500'>{dateFormat(createdAt)}</span>
 
                             <StatusIcon status={status} size={13} css='text-gray-500' />
                         </div>
