@@ -9,6 +9,7 @@ import { PiVideo } from 'react-icons/pi';
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { FaUserFriends } from "react-icons/fa";
+import { avaterImg } from '@/envAccess';
 
 
 const HomeLeftSidebar = () => {
@@ -16,14 +17,14 @@ const HomeLeftSidebar = () => {
     return (
         <div className='top-[75px] sticky'>
 
-            <div className='bg-white rounded'>
+            <div className='bg-white rounded min-h-[calc(100vh-80px)]'>
                 <ul className='py-3 px-3 '>
                     <li>
                         <Link href={`/${user?.profileUrl}`} className='w-full py-2 px-3 rounded flex items-center gap-3 hover:bg-gray-50 transition-all' transition-all>
                             <span className='w-7 h-7 rounded-full '>
-                                <Image src={'/image/avater/profile1.png'} className='w-7 h-7 rounded-full' height={80} width={80} alt='avater' />
+                                <Image src={user?.profileImage?.fileUrl || avaterImg} className='w-7 h-7 rounded-full' height={80} width={80} alt='avater' />
                             </span>
-                            <span>Mohin Rana</span>
+                            <span>{user?.name?.fullName}</span>
                         </Link>
                     </li>
                     <li>

@@ -10,6 +10,7 @@ import StatusIcon from '@/ui/StatusIcon';
 import PostCommentComponent from './PostCommentComponent';
 import PostReactionComponent from './PostReactionComponent';
 import moment from 'moment';
+import { avaterImg } from '@/envAccess';
 
 const dateFormat = (date) => {
     let now = moment();
@@ -30,7 +31,15 @@ const PostCard = ({ post }) => {
         <div className=' rounded  bg-white'>
             <div className='flex justify-between  pt-3 pb-2 px-3'>
                 <div className='flex justify-between gap-3'>
-                    <Image src={'/image/avater/profile1.png'} width={50} height={50} alt='avater' />
+                    <Link href={`${owner?.profileUrl}`}>
+                        <Image
+                            src={owner?.profileImage?.fileUrl || avaterImg}
+                            width={50}
+                            height={50}
+                            alt={owner?.name?.fullName}
+                            className='w-10 h-10 rounded-full'
+                        />
+                    </Link>
                     <div>
                         <>
                             <Link href={`${owner?.profileUrl}`} className='text-sm'>

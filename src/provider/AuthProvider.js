@@ -2,6 +2,7 @@
 
 import useAxios from "@/hooks/useAxios";
 import { addUser, authLoading } from "@/redux/auth/authSlice";
+import { fetchProfileStatics } from "@/redux/data/dataSlice";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
@@ -14,10 +15,10 @@ const AuthProvider = ({ children }) => {
                 dispatch(authLoading(true));
                 const response = await axios.get("/auth/auth");
                 dispatch(addUser(response?.data));
+                dispatch(fetchProfileStatics())
                 dispatch(authLoading(false));
             } catch (error) {
                 dispatch(authLoading(false));
-                console.log(error.message);
             } finally {
                 dispatch(authLoading(false));
             }

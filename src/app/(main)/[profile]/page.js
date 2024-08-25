@@ -12,6 +12,7 @@ import { useContext } from 'react';
 import { ProfileContext } from '@/provider/ProfileProvider';
 import { getMonthFormat } from '@/utils/dateFormat';
 import PostContainer from '@/components/cards/PostContainer';
+import PostCreator from '@/ui/PostCreator/PostCreator';
 
 
 
@@ -148,6 +149,7 @@ const ProfilePage = () => {
             </div>
             <div className=''>
                 <div className='flex flex-col gap-4'>
+                    <PostCreator />
                     <PostContainer query={profile?._id} />
                 </div>
             </div>

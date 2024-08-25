@@ -4,7 +4,7 @@ export const CreatePostContext = createContext({})
 const CreatePostProvider = ({ children }) => {
   const [post, setPost] = useState({})
   const [withFriends, setWithFriends] = useState([])
-  console.log(post);
+
 
 
   const postObject = {
