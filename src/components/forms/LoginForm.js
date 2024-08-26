@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { addUser } from '@/redux/auth/authSlice';
+import { fetchProfileStatics } from '@/redux/data/dataSlice';
 
 const LoginForm = () => {
     const axios = useAxios();
@@ -30,6 +31,7 @@ const LoginForm = () => {
                 const res = await axios.post('/auth/login', values);
                 if (res.data?.success) {
                     dispatch(addUser(res.data))
+                    dispatch(fetchProfileStatics())
                     router.push('/')
                     toast.success("Login success")
                 } else {
@@ -43,7 +45,7 @@ const LoginForm = () => {
         }
     })
     return (
-        <form onSubmit={formik.handleSubmit} className='flex gap-8  flex-col w-[500px]'>
+        <form onSubmit={formik.handleSubmit} className='flex gap-8  flex-col res55:w-[500px]'>
             <div>
                 <label htmlFor="email" className='text-gray-100 mb-1 inline-flex'>Email</label>
                 <input

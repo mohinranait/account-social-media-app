@@ -25,17 +25,15 @@ const dataSlice = createSlice({
     name: "data",
     initialState,
     reducers: {
-        setAllPosts: (state, { payload }) => {
-
-            state.posts = payload?.payload?.posts;
+        setAddPost: (state, { payload }) => {
+            // Set new post in posts state
+            state.posts = [payload?.payload?.post, ...state.posts];
         }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchPosts.pending, (state, { payload }) => {
             state.isLoading = true;
         }).addCase(fetchPosts.fulfilled, (state, { payload }) => {
-            console.log(payload);
-
             state.posts = payload?.payload?.posts;
             state.isLoading = false;
         }).addCase(fetchPosts.rejected, (state, { payload }) => {
@@ -46,8 +44,6 @@ const dataSlice = createSlice({
         builder.addCase(fetchProfileStatics.pending, (state) => {
             state.isLoading = true;
         }).addCase(fetchProfileStatics.fulfilled, (state, action) => {
-            console.log(action.payload.payload);
-
             state.statics = action.payload.payload;
             state.isLoading = false;
         }).addCase(fetchProfileStatics.rejected, (state, { payload }) => {
@@ -58,5 +54,5 @@ const dataSlice = createSlice({
 })
 
 
-export const { setAllPosts } = dataSlice.actions;
+export const { setAddPost } = dataSlice.actions;
 export default dataSlice.reducer;

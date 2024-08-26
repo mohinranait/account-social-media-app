@@ -11,6 +11,35 @@
     outline: none;
   }
 
+  .custom_scroll {
+    @apply overflow-y-auto;
+    /* Apply Tailwind utilities for overflow */
+
+    /* Custom Scrollbar Styles */
+    ::-webkit-scrollbar {
+      width: 5px;
+      border-radius: 0px;
+      /* Width of the scrollbar */
+    }
+
+    ::-webkit-scrollbar-track {
+      @apply bg-gray-200;
+      border-radius: 0px;
+      /* Track background */
+    }
+
+    ::-webkit-scrollbar-thumb {
+      @apply bg-gray-300;
+      border-radius: 0px;
+      /* Scrollbar thumb */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      @apply bg-gray-400;
+      /* Scrollbar thumb on hover */
+    }
+  }
+
   .text-balance {
     text-wrap: balance;
   }

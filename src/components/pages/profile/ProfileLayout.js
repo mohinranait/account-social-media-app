@@ -15,11 +15,15 @@ import { ProfileContext } from '@/provider/ProfileProvider';
 import useAxios from '@/hooks/useAxios';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '@/redux/auth/authSlice';
+import { avaterImg } from '@/envAccess';
 
 const ProfileLayout = ({ children }) => {
     const dispatch = useDispatch()
     const { profile, setProfile } = useContext(ProfileContext);
     const { user } = useSelector(state => state.auth);
+    const { statics } = useSelector(state => state.data);
+
+
     const [loadingProfile, setLoadingProfile] = useState(false)
 
     const axios = useAxios()
@@ -28,6 +32,7 @@ const ProfileLayout = ({ children }) => {
 
         const formData = new FormData();
         formData.append('file', getFile);
+        formData.append('fileType', 'profile')
 
         try {
             setLoadingProfile(true)
@@ -77,26 +82,18 @@ const ProfileLayout = ({ children }) => {
                         <div className='flex flex-col mb-2 gap-1'>
                             <h1 className='text-3xl text-center res5:text-left font-semibold text-gray-900'>{profile?.name?.fullName}</h1>
                             <div className='flex gap-1 items-center'>
-                                <Link href={'/'} className='text-gray-500 text-sm inline-block'>120k  Followrs</Link>
+                                <Link href={'/'} className='text-gray-500 text-sm inline-block hover:underline hover:text-gray-900'>{statics?.totalFollower}  Followrs</Link>
                                 <span className='w-1 h-1 rounded-full bg-gray-400 inline-block'></span>
-                                <Link href={'/'} className='text-gray-500 text-sm inline-block'>120k  Following</Link>
+                                <Link href={'/'} className='text-gray-500 text-sm inline-block hover:underline hover:text-gray-900'>{statics?.totalFollowing}  Following</Link>
                             </div>
                             <ul className='flex justify-center res5:justify-start '>
-                                <li className='w-10 h-10 rounded-full bg-white'>
-                                    <Link href={'/'}>
-                                        <Image className='w-10 h-10 p-[2px] rounded-full' width={40} height={40} alt='avater' src={'/image/avater/profile1.png'} />
-                                    </Link>
-                                </li>
-                                <li className='w-10 h-10 rounded-full bg-white -ml-4'>
-                                    <Link href={'/'}>
-                                        <Image className='w-10 h-10 p-[2px] rounded-full' width={40} height={40} alt='avater' src={'/image/avater/profile1.png'} />
-                                    </Link>
-                                </li>
-                                <li className='w-10 h-10 rounded-full bg-white -ml-4'>
-                                    <Link href={'/'}>
-                                        <Image className='w-10 h-10 p-[2px] rounded-full' width={40} height={40} alt='avater' src={'/image/avater/profile1.png'} />
-                                    </Link>
-                                </li>
+                                {
+                                    statics?.friends?.map((friend, idx) => <li key={friend?._id} className={`w-10 h-10 rounded-full bg-white ${idx != 0 && '-ml-4'} `}>
+                                        <Link href={`/${friend?.profileUrl}`}>
+                                            <Image className='w-10 h-10 p-[2px] rounded-full' width={40} height={40} alt={friend?.name?.fullName} src={friend?.profileImage?.fileUrl || avaterImg} />
+                                        </Link>
+                                    </li>)
+                                }
                             </ul>
                         </div>
                     </div>

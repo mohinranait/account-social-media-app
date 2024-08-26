@@ -23,7 +23,7 @@ const HomePage = () => {
           </div>
           <div className='col-span-2 flex flex-col gap-5 '>
             <PostCreator />
-            <div className=' bg-gray-100 md:mx-[50px] lg:mx-0 res12:px-[50px] flex flex-col gap-5 '>
+            <div className='  md:mx-[50px] lg:mx-0 res12:px-[50px] flex flex-col gap-5 '>
               <SuggestsCurd />
               <PostContainer query={'all'} />
             </div>

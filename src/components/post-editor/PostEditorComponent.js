@@ -10,14 +10,15 @@ import AudianceStatus from '@/ui/list_forms/AudianceStatus';
 import StatusIconWithText from '@/ui/StatusIconWithText';
 import SearchTagUserByName from '@/ui/common/SearchTagUserByName';
 import useCreatePost from '@/hooks/useCreatePost';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import useAxios from '@/hooks/useAxios';
 import Image from 'next/image';
+import { setAddPost } from '@/redux/data/dataSlice';
 
 const PostEditorComponent = ({ setIsOpen }) => {
     const { post, setPost, withFriends, setWithFriends } = useCreatePost({});
     const { user } = useSelector(state => state.auth);
-
+    const dispatch = useDispatch()
     const axios = useAxios();
     const [isSecondModal, setIsSecondModal] = useState(false)
     const [isFile, setIsFile] = useState(false)
@@ -37,6 +38,7 @@ const PostEditorComponent = ({ setIsOpen }) => {
         if (uploadFile != null) {
             let formData = new FormData();
             formData.append('file', uploadFile);
+            formData.append('fileType', 'post');
 
             try {
                 const res = await axios.post(`/file/upload`, formData, {
@@ -58,13 +60,18 @@ const PostEditorComponent = ({ setIsOpen }) => {
             ...post,
             owner: user?._id,
             withFriends,
-            media: uploadedImageId
         }
+
+        if (uploadedImageId.trim() != '') {
+            postObject.media = uploadedImageId;
+        }
+
 
 
         try {
             const res = await axios.post(`/post/create`, postObject)
             if (res?.data.success) {
+                dispatch(setAddPost(res?.data))
                 setIsOpen(false)
                 setPost({})
                 setWithFriends([])
@@ -118,7 +125,7 @@ const PostEditorComponent = ({ setIsOpen }) => {
                                     }} className='flex items-center gap-1  bg-gray-100 rounded  px-2 py-1 cursor-pointer '>
                                         {/* <IoEarthSharp size={13} />
                                         <span className='text-sm'>Public</span> */}
-                                        <StatusIconWithText status={user?.status} iconStyle={'text-gray-800'} textStyle="text-gray-800 !text-xs" size={16} />
+                                        <StatusIconWithText status={post?.status} iconStyle={'text-gray-800'} textStyle="text-gray-800 !text-xs" size={16} />
                                         <MdArrowDropDown size={20} />
                                     </div>
                                 </div>
