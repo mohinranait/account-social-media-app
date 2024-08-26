@@ -92,6 +92,10 @@
     flex: 1;
   }
 
+  .details_block {
+    flex: 2;
+  }
+
   .detailsActive {
     flex: 2;
     display: block;

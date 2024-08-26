@@ -1,14 +1,19 @@
 'use client';
 import useAxios from '@/hooks/useAxios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
 import { IoIosSearch } from 'react-icons/io'
 import { useDispatch, useSelector } from 'react-redux';
 import ConversationItem from './create-chat/ConversationItem';
 import { fetchAllConversation } from '@/redux/chat/convercationSlice';
 import Image from 'next/image';
+import { ChatUIContext } from '@/provider/ChatUiProvider';
+import { avaterImg } from '@/envAccess';
 
 const ChatList = ({ openChat }) => {
+    const { isTabletOrMobile, convercationId } = useContext(ChatUIContext);
+
+
     const { user } = useSelector(state => state.auth)
     const { conversations } = useSelector(state => state.convercation)
 
@@ -19,12 +24,12 @@ const ChatList = ({ openChat }) => {
         dispatch(fetchAllConversation({ user }))
     }, [dispatch, user])
     return (
-        <div className={`lists bg-white h-full  flex-col ${openChat ? 'hidden' : 'flex'} `}>
+        <div className={`lists bg-white h-full  flex-col ${isTabletOrMobile && convercationId ? 'hidden' : 'flex'} `}>
             <div className='h-[60px] border-b border-gray-200 flex justify-between px-4 items-center bg-gray-50'>
                 <div>
                     <span className='w-9 h-9 inline-block relative rounded-full '>
                         <span className='w-1 h-1 rounded-full absolute bg-green-500 right-0 top-[10px]'></span>
-                        <Image width={36} height={36} src="/image/avater/profile1.png" className='w-9 h-9 rounded-full' alt="avater" />
+                        <Image width={36} height={36} src={user?.profileImage?.fileUrl || avaterImg} className='w-9 h-9 rounded-full' alt="avater" />
                     </span>
                 </div>
                 <div>

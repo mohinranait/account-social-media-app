@@ -1,20 +1,25 @@
 'use client';
-import React, { useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { FiPhoneCall } from 'react-icons/fi'
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux';
 import MessageEditor from './MessageEditor';
 import { fetchAllMessageByConversation } from '@/redux/chat/chatSlice';
 import MessageItems from './message/MessageItems';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { IoArrowBack } from "react-icons/io5";
 import Image from 'next/image';
+import { ChatUIContext } from '@/provider/ChatUiProvider';
+// import { useRouter } from 'next/router';
 
 
 
 const Chat = ({ setIsDetails, isDetails, openChat }) => {
+    const router = useRouter();
     const { convercation, messages } = useSelector(state => state.chat);
     const searchParams = useSearchParams()
+    const { isTabletOrMobile, convercationId, setConvercatinId } = useContext(ChatUIContext);
+
 
     const { user } = useSelector(state => state.auth);
     const dispatch = useDispatch();
@@ -38,11 +43,17 @@ const Chat = ({ setIsDetails, isDetails, openChat }) => {
 
 
     return (
-        <div className={`chat  h-full  flex-col border-l border-r border-gray-200 ${isDetails ? 'hidden' : ' res8:flex'} `} >
+        <div className={`chat  h-full  flex-col border-l border-r border-gray-200 ${isTabletOrMobile && convercationId ? 'flex' : `  ${isDetails ? 'hidden' : 'hidden res8:flex'} `}  `} >
             <div className='top'>
                 <div className='h-[60px] border-b border-gray-200 flex items-center justify-between px-4 bg-white'>
                     <div className='flex gap-2 items-center'>
-                        <span className='text-gray text-gray-600'>
+                        <span
+                            onClick={() => {
+                                router.back();
+                                setConvercatinId('')
+                            }}
+                            className='text-gray text-gray-600 res8:hidden'
+                        >
                             <IoArrowBack className='' size={20} />
                         </span>
                         <span className='w-9 h-9 inline-block relative rounded-full '>

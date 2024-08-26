@@ -1,16 +1,19 @@
 'use client';
-import React from 'react'
+import React, { useContext } from 'react'
 import { IoCloseOutline } from 'react-icons/io5'
 import PrimaryButton from '../buttons/PrimaryButton'
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ChatUIContext } from '@/provider/ChatUiProvider';
 
 
 const ChatDetails = ({ setIsDetails, isDetails }) => {
     const { convercation } = useSelector(state => state.chat);
+    const { isTabletOrMobile, convercationId } = useContext(ChatUIContext);
+
     return (
-        <div className={`details  ${isDetails ? 'detailsActive' : 'hidden  res9:block'} `}>
+        <div className={`details  ${isDetails ? 'details_block' : 'hidden  res9:block'} `}>
             <div className='h-[60px] border-b border-gray-200 flex items-center justify-between px-4 bg-gray-50'>
                 <div className='flex gap-2'>
 
