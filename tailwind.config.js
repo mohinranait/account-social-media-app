@@ -13,6 +13,7 @@ module.exports = {
       screens: {
         'res3': '300px',
         'res4': '400px',
+        'res45': '450px',
         'res5': '500px',
         'res55': '550px',
         'res6': '600px',

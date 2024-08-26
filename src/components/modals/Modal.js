@@ -8,7 +8,7 @@ const Modal = ({ isOpen, setIsOpen, children }) => {
             <div onClick={(e) => {
                 e.stopPropagation();
             }} >
-                <div className='rounded   overflow-y-auto'>
+                <div className='rounded '>
                     <div className=' h-[calc(100vh-100px)]'>
 
                         {

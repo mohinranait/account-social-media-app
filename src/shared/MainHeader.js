@@ -38,7 +38,7 @@ const MainHeader = () => {
                 <div className='px-4 3xl:container'>
                     <div className='flex res7:grid justify-between items-center grid-cols-4 gap-5'>
 
-                        <div className='col-span-1 flex items-center gap-5 '>
+                        <div className='hidden col-span-1 res7:flex items-center gap-5 '>
                             <span>
                                 <BiLogoAdobe />
                             </span>
@@ -50,7 +50,7 @@ const MainHeader = () => {
                             </div>
                         </div>
 
-                        <div className='hidden res7:block col-span-2'>
+                        <div className='w-full  col-span-2'>
                             <div>
                                 <ul className="flex justify-around items-center gap-5">
                                     <li>
@@ -68,7 +68,7 @@ const MainHeader = () => {
                                             <PiVideo size={28} className="text-white" />
                                         </Link>
                                     </li>
-                                    <li>
+                                    <li className="hidden res6:block">
                                         <Link href={'/'}>
                                             <LiaLayerGroupSolid size={30} className="text-white" />
                                         </Link>
@@ -77,9 +77,9 @@ const MainHeader = () => {
                                 </ul>
                             </div>
                         </div>
-                        <div className='col-span-1'>
+                        <div className=' w-full col-span-1'>
                             <div>
-                                <ul className="flex justify-end items-center gap-5">
+                                <ul className="flex res5:justify-end items-center gap-5">
 
                                     <li>
                                         <Link href={`/message`} className="flex items-center gap-1 cursor-pointer relative">
@@ -87,7 +87,7 @@ const MainHeader = () => {
                                             <FaFacebookMessenger size={25} className="text-white" />
                                         </Link>
                                     </li>
-                                    <li>
+                                    <li className="">
                                         <div className="flex items-center gap-1 cursor-pointer relative">
                                             <span className="w-[15px] h-[15px] rounded-full bg-white text-primary flex items-center justify-center text-xs  absolute -top-1 -right-1">4</span>
                                             <IoIosNotificationsOutline size={25} className="text-white" />
@@ -100,7 +100,7 @@ const MainHeader = () => {
                                             <MenuButton>
                                                 <div className="flex items-center gap-1 cursor-pointer ">
                                                     <FaRegUserCircle size={25} className="text-white" />
-                                                    <span className="text-md text-white">{user?.name?.firstName}</span>
+                                                    <span className="hidden res5:block text-md text-white">{user?.name?.firstName}</span>
                                                 </div>
                                             </MenuButton>
                                             <MenuItems >

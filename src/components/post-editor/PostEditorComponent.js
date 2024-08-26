@@ -101,10 +101,10 @@ const PostEditorComponent = ({ setIsOpen }) => {
 
     return (
 
-        <div key={user?._id} className='w-[500px] overflow-x-hidden '>
-            <div className={`w-[1000px] grid grid-cols-2 items-center transition duration-75   ${isSecondModal ? '-translate-x-[500px]' : 'translate-x-[0px]'} `}>
+        <div key={user?._id} className='w-screen res6:w-[500px]  overflow-x-hidden '>
+            <div className={`w-[200vw]  res6:w-[1000px] grid grid-cols-2 items-center transition duration-75   ${isSecondModal ? ' -translate-x-[100vw] res6:-translate-x-[500px]' : 'translate-x-[0px]'} `}>
                 {/* First modal  */}
-                <div className='w-[500px] bg-white'>
+                <div className='w-screen  res6:w-[500px] min-h-[calc(100vh-100px)] res6:h-auto bg-white'>
                     <div className=''>
                         <div className='relative  py-3 border-b'>
                             <p className='text-center text-xl font-medium'>Create post</p>
@@ -195,7 +195,7 @@ const PostEditorComponent = ({ setIsOpen }) => {
                 </div>
 
                 {/* Second modal */}
-                <div className='w-[500px] bg-white rounded'>
+                <div className='w-screen  res6:w-[500px]  res6:h-auto bg-white rounded'>
                     {/* Tag firends modal */}
                     {
                         isTagModal &&

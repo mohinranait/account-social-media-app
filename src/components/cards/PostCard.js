@@ -28,7 +28,7 @@ const PostCard = ({ post }) => {
     const { _id, text, status, owner, withFriends, media, createdAt } = post || {}
 
     return (
-        <div className=' rounded  bg-white'>
+        <div className=' res5:rounded  bg-white'>
             <div className='flex justify-between  pt-3 pb-2 px-3'>
                 <div className='flex justify-between gap-3'>
                     <Link href={`${owner?.profileUrl}`}>
