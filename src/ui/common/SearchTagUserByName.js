@@ -72,7 +72,7 @@ const SearchTagUserByName = ({ setIsSecondModal, setIsTagModal }) => {
 
   useEffect(() => {
     handleSearchChange()
-  }, [])
+  }, [handleSearchChange])
 
   return (
     <div className=''>

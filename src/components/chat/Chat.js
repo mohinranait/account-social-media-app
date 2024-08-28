@@ -9,7 +9,8 @@ import MessageItems from './message/MessageItems';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { IoArrowBack } from "react-icons/io5";
 import Image from 'next/image';
-import { ChatUIContext } from '@/provider/ChatUiProvider';
+import { ChatDesignContext } from '@/provider/ChatDesignProvider';
+
 // import { useRouter } from 'next/router';
 
 
@@ -18,7 +19,7 @@ const Chat = ({ setIsDetails, isDetails, openChat }) => {
     const router = useRouter();
     const { convercation, messages } = useSelector(state => state.chat);
     const searchParams = useSearchParams()
-    const { isTabletOrMobile, convercationId, setConvercatinId } = useContext(ChatUIContext);
+    const { isTabletOrMobile, convercationId, setConvercatinId } = useContext(ChatDesignContext);
 
 
     const { user } = useSelector(state => state.auth);

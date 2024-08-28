@@ -13,7 +13,7 @@ const PostContainer = ({ query }) => {
     useEffect(() => {
         if (!isValidObjectId(query) && query !== 'all') return;
         dispatch(fetchPosts(query))
-    }, [query])
+    }, [query, dispatch])
 
 
     return (

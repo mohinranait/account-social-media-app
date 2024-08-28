@@ -5,12 +5,12 @@ import PrimaryButton from '../buttons/PrimaryButton'
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChatUIContext } from '@/provider/ChatUiProvider';
+import { ChatDesignContext } from '@/provider/ChatDesignProvider';
 
 
 const ChatDetails = ({ setIsDetails, isDetails }) => {
     const { convercation } = useSelector(state => state.chat);
-    const { isTabletOrMobile, convercationId } = useContext(ChatUIContext);
+    const { isTabletOrMobile, convercationId } = useContext(ChatDesignContext);
 
     return (
         <div className={`details  ${isDetails ? 'details_block' : 'hidden  res9:block'} `}>

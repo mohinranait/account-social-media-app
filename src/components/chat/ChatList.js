@@ -7,11 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import ConversationItem from './create-chat/ConversationItem';
 import { fetchAllConversation } from '@/redux/chat/convercationSlice';
 import Image from 'next/image';
-import { ChatUIContext } from '@/provider/ChatUiProvider';
 import { avaterImg } from '@/envAccess';
+import { ChatDesignContext } from '@/provider/ChatDesignProvider';
 
 const ChatList = ({ openChat }) => {
-    const { isTabletOrMobile, convercationId } = useContext(ChatUIContext);
+    const { isTabletOrMobile, convercationId } = useContext(ChatDesignContext);
 
 
     const { user } = useSelector(state => state.auth)

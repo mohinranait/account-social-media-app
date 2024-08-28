@@ -4,7 +4,8 @@ import ChatDetails from '@/components/chat/ChatDetails'
 import ChatList from '@/components/chat/ChatList'
 import { socketUrl } from '@/envAccess';
 import useSocket from '@/hooks/useSocket';
-import ChatUIProvider from '@/provider/ChatUiProvider';
+import ChatDesignProvider from '@/provider/ChatDesignProvider';
+
 
 import React, { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
@@ -17,7 +18,7 @@ const MessagePage = () => {
 
 
     return (
-        <ChatUIProvider>
+        <ChatDesignProvider>
             <div className='chat_wrap h-[calc(100vh-56px)] sm:px-4 3xl:container'>
                 <div className='chat_container h-full flex'>
 
@@ -34,7 +35,7 @@ const MessagePage = () => {
                     />
                 </div>
             </div>
-        </ChatUIProvider>
+        </ChatDesignProvider>
     )
 }
 
