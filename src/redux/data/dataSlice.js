@@ -11,13 +11,15 @@ const initialState = {
 }
 
 // get posts
-export const fetchPosts = createAsyncThunk(`posts/fetchPosts`, (query = 'all') => {
-    return fetchPostsApi(query)
+export const fetchPosts = createAsyncThunk(`posts/fetchPosts`, async (query = 'all') => {
+    let response = await fetchPostsApi(query)
+    return response;
 })
 
 // get profile statics
-export const fetchProfileStatics = createAsyncThunk(`users/profileStatics`, () => {
-    return fetchStatics()
+export const fetchProfileStatics = createAsyncThunk(`users/profileStatics`, async () => {
+    let response = await fetchStatics()
+    return response;
 })
 
 

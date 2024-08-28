@@ -13,7 +13,6 @@ const initialState = {
 
 export const fetchAllConversation = createAsyncThunk('convercations/getAllConvercation', async ({ user }) => {
     const res = await instance.get(`/chat/conversations/${user?._id}`)
-    console.log(res?.data);
     return res.data?.conversations
 })
 
