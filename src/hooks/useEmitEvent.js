@@ -1,16 +1,16 @@
 // hooks/useEmitEvent.js
-// import useSocket from './useSocket';
+import useSocket from './useSocket';
 
-// const useEmitEvent = (user) => {
-//     const socket = useSocket(user);
+const useEmitEvent = (user) => {
+    const socket = useSocket(user);
 
-//     const emit = (event, ...args) => {
-//         if (socket) {
-//             socket.emit(event, ...args);
-//         }
-//     };
+    const emit = (event, ...args) => {
+        if (socket) {
+            socket.emit(event, ...args);
+        }
+    };
 
-//     return emit;
-// };
+    return emit;
+};
 
-// export default useEmitEvent;
+export default useEmitEvent;
