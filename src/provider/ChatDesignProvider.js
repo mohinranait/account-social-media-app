@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 
 export const ChatDesignContext = createContext(null)
 
-const ChatDesignProvider = () => {
+const ChatDesignProvider = ({ children }) => {
     const params = useSearchParams();
     const paramsId = params.get('con');
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 800px)' })

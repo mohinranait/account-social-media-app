@@ -1,23 +1,23 @@
 // hooks/useSocketEvent.js
-import { useEffect } from 'react';
-import useSocket from './useSocket';
+// import { useEffect } from 'react';
+// import useSocket from './useSocket';
 
-const useSocketEvent = (event, handler, user) => {
-    const socket = useSocket(user);
+// const useSocketEvent = (event, handler, user) => {
+//     const socket = useSocket(user);
 
-    useEffect(() => {
-        if (socket) {
-            socket.on(event, handler);
-        }
+//     useEffect(() => {
+//         if (socket) {
+//             socket.on(event, handler);
+//         }
 
-        return () => {
-            if (socket) {
-                socket.off(event, handler);
-            }
-        };
-    }, [socket, event, handler]);
+//         return () => {
+//             if (socket) {
+//                 socket.off(event, handler);
+//             }
+//         };
+//     }, [socket, event, handler]);
 
-    return socket;
-};
+//     return socket;
+// };
 
-export default useSocketEvent;
+// export default useSocketEvent;
