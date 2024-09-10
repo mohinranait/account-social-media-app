@@ -5,6 +5,7 @@ import AddFriendCard from '../AddFirend/AddFriendCard'
 import PrimaryButton from '@/components/buttons/PrimaryButton'
 import Link from 'next/link'
 import useAxios from '@/hooks/useAxios'
+import HomeFriendSlider from '@/components/Sliders/HomeFriendSlider';
 
 const SuggestsCurd = () => {
 
@@ -37,11 +38,12 @@ const SuggestsCurd = () => {
                 <span> <HiOutlineDotsVertical size={16} className='text-gray-600' /></span>
             </div>
             <div>
-                <div className='grid grid-cols-3 gap-1 px-3 pt-2'>
+                <HomeFriendSlider friendsSuggestions={friendsSuggestions} />
+                {/* <div className='grid grid-cols-3 gap-1 px-3 pt-2'>
                     {
                         friendsSuggestions?.slice(0, 3)?.map(user => <AddFriendCard key={user?._id} user={user} />)
                     }
-                </div>
+                </div> */}
             </div>
             <div className='px-3 pb-3 pt-2'>
                 <Link href={`/friends/suggestions`}>

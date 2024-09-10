@@ -6,12 +6,12 @@ import { FaUserPlus } from "react-icons/fa6";
 import Image from 'next/image';
 import useAxios from '@/hooks/useAxios';
 
-const AddFriendCard = ({ user }) => {
+const AddFriendCard = ({ user, handleRemoveFromUI }) => {
     const axios = useAxios();
     const [isLoading, setIsLoading] = useState(false)
     const { _id, name, profileImage } = user || {}
     const [sendRequest, setSendRequest] = useState(null)
-    console.log(sendRequest);
+
 
     // handle friend request
     const handleAddRequest = async (userId) => {
@@ -52,7 +52,8 @@ const AddFriendCard = ({ user }) => {
     return (
         <div className='px-1 py-1 shadow rounded bg-white'>
             <div className='h-[50px] bg-gray-100 rounded relative'>
-                <span className='absolute right-1 top-1 w-6 h-6 rounded-full bg-gray-500 bg-opacity-15 cursor-pointer flex items-center justify-center'><IoCloseOutline /></span>
+
+                <span onClick={() => handleRemoveFromUI(_id)} className='absolute right-1 top-1 w-6 h-6 rounded-full bg-gray-500 bg-opacity-15 cursor-pointer flex items-center justify-center'><IoCloseOutline /></span>
             </div>
 
 

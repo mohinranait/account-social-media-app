@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import useAxios from '@/hooks/useAxios';
 import toast from 'react-hot-toast';
 
-const RegisterForm = () => {
+const RegisterForm = ({ setIsModal }) => {
     const axios = useAxios();
     const [isLoading, setIsLoading] = useState(false)
 
@@ -52,6 +52,7 @@ const RegisterForm = () => {
 
                 if (res.data?.success) {
                     toast.success("Register success")
+                    setIsModal && setIsModal(false)
                 } else {
                     toast.error("Somthing wrong, Try again")
                 }

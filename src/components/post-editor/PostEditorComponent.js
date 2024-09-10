@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoCloseOutline } from "react-icons/io5";
 import { MdAddToPhotos } from "react-icons/md";
 import { FaUserTag } from "react-icons/fa";
@@ -15,7 +15,7 @@ import useAxios from '@/hooks/useAxios';
 import Image from 'next/image';
 import { setAddPost } from '@/redux/data/dataSlice';
 
-const PostEditorComponent = ({ setIsOpen }) => {
+const PostEditorComponent = ({ setIsOpen, selectedPost }) => {
     const { post, setPost, withFriends, setWithFriends } = useCreatePost({});
     const { user } = useSelector(state => state.auth);
     const dispatch = useDispatch()
@@ -27,6 +27,13 @@ const PostEditorComponent = ({ setIsOpen }) => {
     const [images, setImages] = useState('')
     const [uploadFile, setUploadFile] = useState(null)
 
+
+
+    useEffect(() => {
+        if (selectedPost?._id) {
+            setPost(selectedPost)
+        }
+    }, [selectedPost?._id])
 
 
 
@@ -104,7 +111,7 @@ const PostEditorComponent = ({ setIsOpen }) => {
         <div key={user?._id} className='w-screen res6:w-[500px]  overflow-x-hidden '>
             <div className={`w-[200vw]  res6:w-[1000px] grid grid-cols-2 items-center transition duration-75   ${isSecondModal ? ' -translate-x-[100vw] res6:-translate-x-[500px]' : 'translate-x-[0px]'} `}>
                 {/* First modal  */}
-                <div className='w-screen  res6:w-[500px] min-h-[calc(100vh-100px)] res6:h-auto bg-white'>
+                <div className='w-screen  res6:w-[500px] min-h-[calc(100vh-100px)] res6:min-h-[300px] bg-white'>
                     <div className=''>
                         <div className='relative  py-3 border-b'>
                             <p className='text-center text-xl font-medium'>Create post</p>
