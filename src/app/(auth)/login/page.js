@@ -46,7 +46,7 @@ const LoginPage = () => {
             <p className='text-xl text-white font-semibold'>Reigster now</p>
             <span onClick={() => setIsModal(false)} className='w-10 h-10 cursor-pointer rounded-full bg-gray-500 text-black flex items-center justify-center'><IoCloseOutline /> </span>
           </div>
-          <RegisterForm />
+          <RegisterForm setIsModal={setIsModal} />
         </div>
       </Modal>
     </div>

@@ -11,6 +11,7 @@ import PostCommentComponent from './PostCommentComponent';
 import PostReactionComponent from './PostReactionComponent';
 import moment from 'moment';
 import { avaterImg } from '@/envAccess';
+import PostActionIcon from './PostActionIcon';
 
 const dateFormat = (date) => {
     let now = moment();
@@ -58,7 +59,7 @@ const PostCard = ({ post }) => {
                 <div>
                     <>
                         <span className='w-7 h-7 flex justify-center items-center rounded-full hover:bg-gray-50 cursor-pointer '>
-                            <HiOutlineDotsVertical size={16} />
+                            <PostActionIcon post={post} />
                         </span>
                     </>
                 </div>
